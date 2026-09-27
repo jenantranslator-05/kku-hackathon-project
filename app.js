@@ -3,12 +3,15 @@
 
   const places = window.ABHA_PLACES;
   const storageKey = "abhaVisitorGuideSavedTrip";
+  const themeStorageKey = "abhaVisitorGuideTheme";
   const labels = {
     en: {
       home: "Home", explore: "Explore", planner: "Plan my trip", saved: "Saved trip",
       language: "العربية", openNav: "Open navigation", closeNav: "Close navigation",
-      plan: "Plan My Trip", exploreAll: "Explore all places", start: "START HERE",
-      interestsTitle: "What are you looking for?", interestHint: "Explore places", approvedTag: "Approved tag",
+      themeLight: "Light", themeDark: "Dark", switchToLight: "Switch to light mode", switchToDark: "Switch to dark mode",
+      plan: "Plan My Trip", exploreHero: "Explore Places", exploreAll: "Explore all places", viewAll: "View all destinations",
+      heroEyebrow: "ABHA, ASIR", heroKicker: "A local guide to the mountain city",
+      start: "START HERE", interestsTitle: "What are you looking for?", interestHint: "Explore places", approvedTag: "Approved tag",
       galleryEyebrow: "DESTINATION GALLERY", galleryTitle: "A closer look at Abha.", galleryCopy: "From misty peaks to warm café corners, find the place that fits your day.", exploreDestination: "Explore this place",
       callout: "YOUR DAY, YOUR WAY", calloutTitle: "Five quick choices. A plan made for you.", build: "Build my plan",
       exploreEyebrow: "EXPLORE ABHA", exploreTitle: "Places for every kind of day.",
@@ -18,11 +21,9 @@
       plannerText: "Answer five quick questions. Recommendations use only the places and details in this guide.",
       qTraveler: "Who are you traveling with?", qInterest: "What do you love? Select all that apply.", qTime: "How much time do you have?",
       qBudget: "What is your budget?", qWalking: "What walking level works for you?", create: "Create My Trip", chooseInterest: "Choose at least one interest to create your trip.",
-      resultEyebrow: "YOUR ABHA PLAN", resultTitle: "Your route is ready.",
-      resultSummary: "A {time} plan shaped around {interest}.",
+      resultEyebrow: "YOUR ABHA PLAN", resultTitle: "Your route is ready.", resultSummary: "A {time} plan shaped around {interest}.",
       change: "Change Something", save: "Save My Trip", savedSuccess: "Your trip has been saved in this browser.",
-      savedEyebrow: "SAVED IN THIS BROWSER", savedTitle: "Your saved trip.",
-      savedText: "Your choices stay on this device only. They are never sent anywhere.",
+      savedEyebrow: "SAVED IN THIS BROWSER", savedTitle: "Your saved trip.", savedText: "Your choices stay on this device only. They are never sent anywhere.",
       loadExample: "Load example", noSaved: "No trip has been saved yet. Build a plan or load the built-in example.",
       map: "Open map", mapUnavailable: "Map link not available", imageUnavailable: "Image not available",
       category: "Category", cost: "Cost", walking: "Walking", setting: "Setting", duration: "Duration", bestTime: "Best time",
@@ -41,8 +42,10 @@
     ar: {
       home: "الرئيسية", explore: "استكشف", planner: "خطط رحلتك", saved: "الرحلة المحفوظة",
       language: "English", openNav: "فتح القائمة", closeNav: "إغلاق القائمة",
-      plan: "خطط رحلتك", exploreAll: "استكشف كل الأماكن", start: "ابدأ من هنا",
-      interestsTitle: "ما الذي تبحث عنه؟", interestHint: "استكشف الأماكن", approvedTag: "وسم معتمد",
+      themeLight: "فاتح", themeDark: "داكن", switchToLight: "التبديل إلى الوضع الفاتح", switchToDark: "التبديل إلى الوضع الداكن",
+      plan: "خطط رحلتك", exploreHero: "استكشف الوجهات", exploreAll: "استكشف كل الأماكن", viewAll: "عرض كل الوجهات",
+      heroEyebrow: "أبها، عسير", heroKicker: "دليل محلي لمدينة الجبال",
+      start: "ابدأ من هنا", interestsTitle: "ما الذي تبحث عنه؟", interestHint: "استكشف الأماكن", approvedTag: "وسم معتمد",
       galleryEyebrow: "معرض الوجهات", galleryTitle: "نظرة أقرب إلى أبها.", galleryCopy: "من القمم الضبابية إلى زوايا المقاهي الدافئة، اعثر على المكان المناسب ليومك.", exploreDestination: "استكشف هذا المكان",
       callout: "يومك بطريقتك", calloutTitle: "خمسة اختيارات سريعة. وخطة تناسبك.", build: "أنشئ خطتي",
       exploreEyebrow: "استكشف أبها", exploreTitle: "أماكن لكل نوع من الأيام.",
@@ -52,11 +55,9 @@
       plannerText: "أجب عن خمسة أسئلة سريعة. تستخدم الاقتراحات الأماكن والتفاصيل الموجودة في هذا الدليل فقط.",
       qTraveler: "مع من تسافر؟", qInterest: "ما الذي تحبه؟ اختر كل ما ينطبق.", qTime: "كم من الوقت لديك؟",
       qBudget: "ما ميزانيتك؟", qWalking: "ما مستوى المشي المناسب لك؟", create: "أنشئ رحلتي", chooseInterest: "اختر اهتمامًا واحدًا على الأقل لإنشاء رحلتك.",
-      resultEyebrow: "خطتك في أبها", resultTitle: "مسارك جاهز.",
-      resultSummary: "خطة لمدة {time} مبنية حول {interest}.",
+      resultEyebrow: "خطتك في أبها", resultTitle: "مسارك جاهز.", resultSummary: "خطة لمدة {time} مبنية حول {interest}.",
       change: "غيّر شيئًا", save: "احفظ رحلتي", savedSuccess: "تم حفظ رحلتك في هذا المتصفح.",
-      savedEyebrow: "محفوظة في هذا المتصفح", savedTitle: "رحلتك المحفوظة.",
-      savedText: "تبقى اختياراتك على هذا الجهاز فقط، ولا تُرسل إلى أي مكان.",
+      savedEyebrow: "محفوظة في هذا المتصفح", savedTitle: "رحلتك المحفوظة.", savedText: "تبقى اختياراتك على هذا الجهاز فقط، ولا تُرسل إلى أي مكان.",
       loadExample: "تحميل مثال", noSaved: "لم تُحفظ أي رحلة بعد. أنشئ خطة أو حمّل المثال المدمج.",
       map: "فتح الخريطة", mapUnavailable: "رابط الخريطة غير متوفر", imageUnavailable: "الصورة غير متوفرة",
       category: "الفئة", cost: "التكلفة", walking: "المشي", setting: "المكان", duration: "المدة", bestTime: "أفضل وقت",
@@ -81,10 +82,20 @@
     budget: ["Under 100 SAR", "100–300 SAR", "300–500 SAR", "500+ SAR"],
     walking: ["I don’t mind", "Moderate", "Minimal walking"]
   };
-
   const interests = ["Nature", "Cafés", "Food", "Heritage", "Photography", "Family", "Adventures"];
+
+  function loadTheme() {
+    try {
+      const savedTheme = localStorage.getItem(themeStorageKey);
+      return savedTheme === "dark" || savedTheme === "light" ? savedTheme : "light";
+    } catch {
+      return "light";
+    }
+  }
+
   const state = {
     language: "en",
+    theme: loadTheme(),
     filter: "All",
     featuredPlaceId: null,
     preferences: normalizePreferences(window.ABHA_EXAMPLE_PREFERENCES),
@@ -95,6 +106,7 @@
   const all = (selector) => [...document.querySelectorAll(selector)];
   const text = (key) => labels[state.language][key] || key;
   const isArabic = () => state.language === "ar";
+  const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function escapeHtml(value) {
     return String(value).replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#039;", '"': "&quot;" }[char]));
@@ -130,6 +142,25 @@
     return new Intl.ListFormat(isArabic() ? "ar-SA" : "en", { style: "long", type: "conjunction" }).format(values);
   }
 
+  function updateThemeControl() {
+    const toggle = el("#theme-toggle");
+    const label = el("#theme-label");
+    if (!toggle || !label) return;
+    const dark = state.theme === "dark";
+    toggle.setAttribute("aria-pressed", String(dark));
+    toggle.setAttribute("aria-label", text(dark ? "switchToLight" : "switchToDark"));
+    label.textContent = text(dark ? "themeLight" : "themeDark");
+  }
+
+  function applyTheme(theme, persist = false) {
+    state.theme = theme === "dark" ? "dark" : "light";
+    document.documentElement.dataset.theme = state.theme;
+    updateThemeControl();
+    if (persist) {
+      try { localStorage.setItem(themeStorageKey, state.theme); } catch { /* Storage is optional for the visual preference. */ }
+    }
+  }
+
   function renderHomeInterests() {
     el("#home-interests").innerHTML = interests.map((interest) => `
       <button class="interest-button" type="button" data-interest="${interest}">
@@ -140,7 +171,7 @@
 
   function renderHomeGallery() {
     el("#home-gallery").innerHTML = places.map((place) => `
-      <article class="gallery-card">
+      <article class="gallery-card reveal-item">
         <div class="gallery-media">
           <img src="${place.image}" alt="${escapeHtml(nameFor(place))}" loading="lazy">
         </div>
@@ -150,6 +181,7 @@
           <button class="gallery-link" type="button" data-explore-destination="${place.id}" aria-label="${escapeHtml(`${text("exploreDestination")}: ${nameFor(place)}`)}">${escapeHtml(text("exploreDestination"))} <span aria-hidden="true">→</span></button>
         </div>
       </article>`).join("");
+    observeReveals();
   }
 
   function filterMatches(place, filter) {
@@ -170,12 +202,10 @@
     const map = place.mapUrl
       ? `<a class="map-link" href="${place.mapUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(text("map"))} <span aria-hidden="true">↗</span></a>`
       : `<p class="map-unavailable">${escapeHtml(text("mapUnavailable"))}</p>`;
-    return `<article class="place-card" data-place-card="${place.id}" tabindex="-1">
+    return `<article class="place-card reveal-item" data-place-card="${place.id}" tabindex="-1">
       <div class="place-media">${image}</div>
       <div class="place-content">
-        <div class="place-title">
-          <h2>${escapeHtml(nameFor(place))}<span class="place-name-ar" lang="ar" dir="rtl">${escapeHtml(place.nameAr)}</span></h2>
-        </div>
+        <div class="place-title"><h2>${escapeHtml(nameFor(place))}<span class="place-name-ar" lang="ar" dir="rtl">${escapeHtml(place.nameAr)}</span></h2></div>
         <p class="category">${escapeHtml(place.category)}</p>
         <p class="description">${escapeHtml(descriptionFor(place))}</p>
         <ul class="details">
@@ -194,10 +224,9 @@
     el("#filter-bar").innerHTML = filters.map((filter) => `<button class="filter-button ${state.filter === filter && !state.featuredPlaceId ? "active" : ""}" type="button" data-filter="${filter}" aria-pressed="${state.filter === filter && !state.featuredPlaceId}">${escapeHtml(filter === "All" ? text("all") : valueLabel(filter))}</button>`).join("");
     const featured = state.featuredPlaceId ? places.find((place) => place.id === state.featuredPlaceId) : null;
     const matching = featured ? [featured] : places.filter((place) => filterMatches(place, state.filter));
-    el("#place-count").textContent = featured
-      ? text("showingDestination").replace("{place}", nameFor(featured))
-      : text("showing").replace("{count}", matching.length);
+    el("#place-count").textContent = featured ? text("showingDestination").replace("{place}", nameFor(featured)) : text("showing").replace("{count}", matching.length);
     el("#places-grid").innerHTML = matching.length ? matching.map(placeCard).join("") : `<div class="empty-state">${escapeHtml(text("noPlaces"))}</div>`;
+    observeReveals();
   }
 
   function renderChoices() {
@@ -217,25 +246,14 @@
     const values = (place.cost.match(/\d+/g) || []).map(Number);
     return values.length ? Math.min(...values) : 0;
   }
-
   function averageHours(place) {
     const values = (place.duration.match(/\d+/g) || []).map(Number);
     return values.length === 1 ? values[0] : (values[0] + values[1]) / 2;
   }
-
-  function targetHours(time) {
-    return { "2 hours": 2, "Half day": 4, "1 day": 8, "2 days": 16 }[time] || 4;
-  }
-
+  function targetHours(time) { return { "2 hours": 2, "Half day": 4, "1 day": 8, "2 days": 16 }[time] || 4; }
   function budgetRange(budget) {
-    return {
-      "Under 100 SAR": [0, 99],
-      "100–300 SAR": [100, 300],
-      "300–500 SAR": [300, 500],
-      "500+ SAR": [500, Infinity]
-    }[budget] || [0, Infinity];
+    return { "Under 100 SAR": [0, 99], "100–300 SAR": [100, 300], "300–500 SAR": [300, 500], "500+ SAR": [500, Infinity] }[budget] || [0, Infinity];
   }
-
   function matchesInterest(place, interest) {
     if (interest === "Photography" || interest === "Adventures") return place.approvedTags.includes(interest);
     if (interest === "Nature") return /Nature/i.test(place.category);
@@ -244,23 +262,17 @@
     if (interest === "Heritage") return /Heritage/i.test(place.category);
     return false;
   }
-
-  function matchingInterests(place, selectedInterests) {
-    return selectedInterests.filter((interest) => matchesInterest(place, interest));
-  }
-
+  function matchingInterests(place, selectedInterests) { return selectedInterests.filter((interest) => matchesInterest(place, interest)); }
   function travelerMatches(place, traveler) {
     if (traveler === "Solo") return true;
     const pattern = traveler === "Family" ? /Family|Families/i : new RegExp(traveler, "i");
     return pattern.test(place.suitableFor);
   }
-
   function walkingMatches(place, walking) {
     if (walking === "I don’t mind") return true;
     if (walking === "Moderate") return place.walking !== "High";
     return place.walking === "Minimal";
   }
-
   function scorePlace(place, preferences, allowOverBudget) {
     let score = 0;
     const budget = budgetRange(preferences.budget);
@@ -279,11 +291,7 @@
     const preferences = normalizePreferences(rawPreferences);
     const target = targetHours(preferences.time);
     const [, maxBudget] = budgetRange(preferences.budget);
-    const candidates = places
-      .filter((place) => place.mapUrl)
-      .map((place) => ({ place, score: scorePlace(place, preferences, false) }))
-      .sort((a, b) => b.score - a.score);
-
+    const candidates = places.filter((place) => place.mapUrl).map((place) => ({ place, score: scorePlace(place, preferences, false) })).sort((a, b) => b.score - a.score);
     const choose = (list, canExceed) => {
       const selected = [];
       let hours = 0;
@@ -296,47 +304,27 @@
         const canFitTime = selected.length === 0 || hours + placeHours <= target;
         const canFitBudget = cost + placeCost <= maxBudget;
         if (canFitTime && (canFitBudget || canExceed) && (item.score > -10 || hasInterest)) {
-          selected.push(place);
-          hours += placeHours;
-          cost += placeCost;
+          selected.push(place); hours += placeHours; cost += placeCost;
         }
         if (hours >= target * .78) break;
       }
       return { selected, hours, cost };
     };
-
     let chosen = choose(candidates, false);
     let aboveBudget = chosen.cost > maxBudget;
     const chosenInterestCount = new Set(chosen.selected.flatMap((place) => matchingInterests(place, preferences.interest))).size;
     if (!chosen.selected.length || !chosenInterestCount) {
-      const fallbackCandidates = places
-        .filter((place) => place.mapUrl)
-        .map((place) => ({ place, score: scorePlace(place, preferences, true) }))
-        .sort((a, b) => b.score - a.score);
+      const fallbackCandidates = places.filter((place) => place.mapUrl).map((place) => ({ place, score: scorePlace(place, preferences, true) })).sort((a, b) => b.score - a.score);
       chosen = choose(fallbackCandidates, true);
       aboveBudget = chosen.cost > maxBudget;
     }
-
     if (!chosen.selected.length) {
       chosen = { selected: [places.find((place) => place.mapUrl && place.id !== "curo")], hours: 2, cost: 50 };
       aboveBudget = chosen.cost > maxBudget;
     }
-
     const matched = new Set(chosen.selected.flatMap((place) => matchingInterests(place, preferences.interest)));
-    const exact = matched.size === preferences.interest.length &&
-      (preferences.traveler === "Solo" || chosen.selected.some((place) => travelerMatches(place, preferences.traveler))) &&
-      chosen.selected.some((place) => walkingMatches(place, preferences.walking));
-
-    return {
-      preferences,
-      places: chosen.selected,
-      hours: chosen.hours,
-      cost: chosen.cost,
-      target,
-      dayCount: preferences.time === "2 days" ? 2 : 1,
-      aboveBudget,
-      exact
-    };
+    const exact = matched.size === preferences.interest.length && (preferences.traveler === "Solo" || chosen.selected.some((place) => travelerMatches(place, preferences.traveler))) && chosen.selected.some((place) => walkingMatches(place, preferences.walking));
+    return { preferences, places: chosen.selected, hours: chosen.hours, cost: chosen.cost, target, dayCount: preferences.time === "2 days" ? 2 : 1, aboveBudget, exact };
   }
 
   function renderPlan() {
@@ -348,41 +336,27 @@
     if (!plan.exact) notices.push(`<p class="notice">${escapeHtml(text("noMatch"))}</p>`);
     if (plan.aboveBudget) notices.push(`<p class="notice warning">${escapeHtml(text("aboveBudget"))}</p>`);
     el("#planner-notices").innerHTML = notices.join("");
-
-    el("#results-summary").textContent = text("resultSummary")
-      .replace("{time}", valueLabel(plan.preferences.time))
-      .replace("{interest}", interestsLabel(plan.preferences.interest));
-
+    el("#results-summary").textContent = text("resultSummary").replace("{time}", valueLabel(plan.preferences.time)).replace("{interest}", interestsLabel(plan.preferences.interest));
     el("#trip-overview").innerHTML = `
       <div class="overview-item"><span>${escapeHtml(text("selected"))}</span><strong>${escapeHtml(interestsLabel(plan.preferences.interest))}</strong></div>
       <div class="overview-item"><span>${escapeHtml(text("estimate"))}</span><strong>${escapeHtml(plan.cost)} SAR</strong></div>
       <div class="overview-item"><span>${escapeHtml(text("totalTime"))}</span><strong>${escapeHtml(plan.hours % 1 ? plan.hours.toFixed(1) : plan.hours)} ${escapeHtml(text("hours"))}</strong></div>
       <div class="overview-item"><span>${escapeHtml(text("budget"))}</span><strong>${escapeHtml(valueLabel(plan.preferences.budget))}</strong></div>`;
-
     const perDay = plan.dayCount === 2 ? [[], []] : [[]];
     const dayHours = new Array(plan.dayCount).fill(0);
     plan.places.forEach((place) => {
       const placement = plan.dayCount === 2 && dayHours[0] + averageHours(place) > 8 ? 1 : 0;
-      perDay[placement].push(place);
-      dayHours[placement] += averageHours(place);
+      perDay[placement].push(place); dayHours[placement] += averageHours(place);
     });
-
     el("#itinerary").innerHTML = perDay.map((dayPlaces, index) => {
       const hourTotal = dayHours[index] % 1 ? dayHours[index].toFixed(1) : dayHours[index];
       const stops = dayPlaces.map((place) => {
-        const weather = place.weatherAlternative && place.weatherAlternative !== "No change needed"
-          ? `<div class="weather-alternative">${escapeHtml(text("weather").replace("{place}", place.weatherAlternative))}</div>` : "";
-        return `<article class="trip-stop">
-          <span class="stop-time">${escapeHtml(place.bestTime)} · ${escapeHtml(place.duration)}</span>
-          <h3>${escapeHtml(nameFor(place))}</h3>
-          <p>${escapeHtml(descriptionFor(place))}</p>
-          <p><strong>${escapeHtml(text("cost"))}:</strong> ${escapeHtml(place.cost)}</p>
-          ${weather}
-          <a class="map-link" href="${place.mapUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(text("map"))} <span aria-hidden="true">↗</span></a>
-        </article>`;
+        const weather = place.weatherAlternative && place.weatherAlternative !== "No change needed" ? `<div class="weather-alternative">${escapeHtml(text("weather").replace("{place}", place.weatherAlternative))}</div>` : "";
+        return `<article class="trip-stop reveal-item"><span class="stop-time">${escapeHtml(place.bestTime)} · ${escapeHtml(place.duration)}</span><h3>${escapeHtml(nameFor(place))}</h3><p>${escapeHtml(descriptionFor(place))}</p><p><strong>${escapeHtml(text("cost"))}:</strong> ${escapeHtml(place.cost)}</p>${weather}<a class="map-link" href="${place.mapUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(text("map"))} <span aria-hidden="true">↗</span></a></article>`;
       }).join("") || `<p class="empty-state">${escapeHtml(text("noMatch"))}</p>`;
       return `<section class="day-section"><div class="day-title"><h2>${escapeHtml(text("day"))} ${index + 1}</h2><span>${hourTotal} ${escapeHtml(text("hours"))}</span></div>${stops}</section>`;
     }).join("");
+    observeReveals();
   }
 
   function changeView(view) {
@@ -396,11 +370,13 @@
     all("[data-view-link]").forEach((link) => link.classList.toggle("active", link.dataset.viewLink === view));
     el("#site-nav").classList.remove("open");
     el("#menu-toggle").setAttribute("aria-expanded", "false");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+    observeReveals();
   }
 
   function renderSaved() {
-    const saved = localStorage.getItem(storageKey);
+    let saved;
+    try { saved = localStorage.getItem(storageKey); } catch { saved = null; }
     if (!saved) {
       el("#saved-trip-content").innerHTML = `<div class="empty-state"><p>${escapeHtml(text("noSaved"))}</p></div>`;
       return;
@@ -409,18 +385,24 @@
       const plan = JSON.parse(saved);
       plan.preferences = normalizePreferences(plan.preferences);
       el("#saved-trip-content").innerHTML = `<div class="saved-card"><h2>${escapeHtml(text("savedTitle"))}</h2><p>${escapeHtml(text("resultSummary").replace("{time}", valueLabel(plan.preferences.time)).replace("{interest}", interestsLabel(plan.preferences.interest)))}</p><button class="button button-primary" type="button" id="open-saved-plan">${escapeHtml(text("saved"))}</button></div>`;
-      el("#open-saved-plan")?.addEventListener("click", () => {
-        state.plan = plan;
-        renderPlan();
-        changeView("results");
-      });
+      el("#open-saved-plan")?.addEventListener("click", () => { state.plan = plan; renderPlan(); changeView("results"); });
     } catch {
-      localStorage.removeItem(storageKey);
-      renderSaved();
+      try { localStorage.removeItem(storageKey); } catch { /* Ignore unavailable storage. */ }
+      el("#saved-trip-content").innerHTML = `<div class="empty-state"><p>${escapeHtml(text("noSaved"))}</p></div>`;
     }
   }
 
+  function captureCurrentPreferences() {
+    const form = el("#planner-form");
+    if (!form) return;
+    const checkedInterest = form.querySelector("input[name='interest']:checked");
+    if (!checkedInterest) return;
+    const formData = new FormData(form);
+    state.preferences = normalizePreferences({ traveler: formData.get("traveler"), interest: formData.getAll("interest"), time: formData.get("time"), budget: formData.get("budget"), walking: formData.get("walking") });
+  }
+
   function updateLanguage() {
+    captureCurrentPreferences();
     const root = document.documentElement;
     root.lang = state.language;
     root.dir = isArabic() ? "rtl" : "ltr";
@@ -431,30 +413,30 @@
     const navigation = ["home", "explore", "planner", "saved"];
     all("[data-view-link]").forEach((link, index) => { link.textContent = text(navigation[index]); });
     el(".brand").setAttribute("aria-label", `${text("footerTitle")} ${text("home")}`);
+    el("#hero-eyebrow").textContent = text("heroEyebrow");
+    el("#hero-kicker").textContent = text("heroKicker");
     el("#home-title").textContent = text("heroTitle");
     el(".hero-text").textContent = text("heroText");
-    el(".hero-badge").innerHTML = `<span aria-hidden="true">✦</span> ${escapeHtml(text("heroBadge"))}`;
-    const plannerLinks = all("[data-go-to='planner']");
-    if (plannerLinks[0]) plannerLinks[0].innerHTML = `${escapeHtml(text("plan"))} <span aria-hidden="true">→</span>`;
-    if (plannerLinks[1]) plannerLinks[1].innerHTML = `${escapeHtml(text("build"))} <span aria-hidden="true">→</span>`;
-    el(".section-heading .eyebrow").textContent = text("start");
+    el("#hero-badge-text").textContent = text("heroBadge");
+    el("[data-hero-action='plan']").innerHTML = `${escapeHtml(text("plan"))} <span aria-hidden="true">→</span>`;
+    el("[data-hero-action='explore']").innerHTML = `${escapeHtml(text("exploreHero"))} <span aria-hidden="true">→</span>`;
+    el("#interests-eyebrow").textContent = text("start");
     el("#interests-title").textContent = text("interestsTitle");
-    el(".text-link").innerHTML = `${escapeHtml(text("exploreAll"))} <span aria-hidden="true">→</span>`;
+    el("#explore-all-link").innerHTML = `${escapeHtml(text("exploreAll"))} <span aria-hidden="true">→</span>`;
     el("#gallery-eyebrow").textContent = text("galleryEyebrow");
     el("#gallery-title").textContent = text("galleryTitle");
     el("#gallery-copy").textContent = text("galleryCopy");
-    el(".home-callout .eyebrow").textContent = text("callout");
-    el(".home-callout h2").textContent = text("calloutTitle");
-    el(".home-callout .button").innerHTML = `${escapeHtml(text("build"))} <span aria-hidden="true">→</span>`;
+    el("#gallery-all-link").innerHTML = `${escapeHtml(text("viewAll"))} <span aria-hidden="true">→</span>`;
+    el("#callout-eyebrow").textContent = text("callout");
+    el("#callout-title").textContent = text("calloutTitle");
+    el("#callout-button").innerHTML = `${escapeHtml(text("build"))} <span aria-hidden="true">→</span>`;
     el("#explore .eyebrow").textContent = text("exploreEyebrow");
     el("#explore-title").textContent = text("exploreTitle");
     el("#explore-title").nextElementSibling.textContent = text("exploreText");
     el("#planner .eyebrow").textContent = text("plannerEyebrow");
     el("#planner-title").textContent = text("plannerTitle");
     el("#planner-title").nextElementSibling.textContent = text("plannerText");
-    Object.entries({ traveler: "qTraveler", interest: "qInterest", time: "qTime", budget: "qBudget", walking: "qWalking" }).forEach(([key, label]) => {
-      document.querySelector(`[data-question="${key}"]`).textContent = text(label);
-    });
+    Object.entries({ traveler: "qTraveler", interest: "qInterest", time: "qTime", budget: "qBudget", walking: "qWalking" }).forEach(([key, label]) => { document.querySelector(`[data-question="${key}"]`).textContent = text(label); });
     el("#planner-form button[type='submit']").innerHTML = `${escapeHtml(text("create"))} <span aria-hidden="true">→</span>`;
     el("#results .eyebrow").textContent = text("resultEyebrow");
     el("#results-title").textContent = text("resultTitle");
@@ -472,6 +454,29 @@
     renderChoices();
     if (state.plan) renderPlan();
     renderSaved();
+    updateThemeControl();
+  }
+
+  let revealObserver;
+  function observeReveals() {
+    const targets = all(".reveal-section, .reveal-item");
+    if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
+      targets.forEach((target) => target.classList.add("is-visible"));
+      return;
+    }
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .08 });
+    }
+    targets.forEach((target) => {
+      if (!target.classList.contains("is-visible")) revealObserver.observe(target);
+    });
   }
 
   function bindEvents() {
@@ -479,7 +484,6 @@
       const view = window.location.hash.slice(1) || "home";
       if (["home", "explore", "planner", "results", "saved"].includes(view)) changeView(view);
     });
-
     document.addEventListener("click", (event) => {
       const link = event.target.closest("[data-go-to], [data-view-link]");
       if (link) {
@@ -490,56 +494,31 @@
         changeView(view);
       }
       const filter = event.target.closest("[data-filter]");
-      if (filter) {
-        state.filter = filter.dataset.filter;
-        state.featuredPlaceId = null;
-        renderExplore();
-      }
+      if (filter) { state.filter = filter.dataset.filter; state.featuredPlaceId = null; renderExplore(); }
       const interest = event.target.closest("[data-interest]");
       if (interest) {
-        state.filter = interest.dataset.interest;
-        state.featuredPlaceId = null;
-        history.replaceState(null, "", "#explore");
-        renderExplore();
-        changeView("explore");
+        state.filter = interest.dataset.interest; state.featuredPlaceId = null;
+        history.replaceState(null, "", "#explore"); renderExplore(); changeView("explore");
       }
       const destination = event.target.closest("[data-explore-destination]");
       if (destination) {
-        state.featuredPlaceId = destination.dataset.exploreDestination;
-        state.filter = "All";
-        history.replaceState(null, "", "#explore");
-        renderExplore();
-        changeView("explore");
+        state.featuredPlaceId = destination.dataset.exploreDestination; state.filter = "All";
+        history.replaceState(null, "", "#explore"); renderExplore(); changeView("explore");
         requestAnimationFrame(() => el(`[data-place-card="${state.featuredPlaceId}"]`)?.focus());
       }
     });
-
     el("#menu-toggle").addEventListener("click", () => {
-      const nav = el("#site-nav");
-      const open = !nav.classList.contains("open");
-      nav.classList.toggle("open", open);
-      el("#menu-toggle").setAttribute("aria-expanded", String(open));
-      el("#menu-toggle").setAttribute("aria-label", open ? text("closeNav") : text("openNav"));
+      const nav = el("#site-nav"); const open = !nav.classList.contains("open");
+      nav.classList.toggle("open", open); el("#menu-toggle").setAttribute("aria-expanded", String(open)); el("#menu-toggle").setAttribute("aria-label", open ? text("closeNav") : text("openNav"));
     });
-
-    el("#language-toggle").addEventListener("click", () => {
-      state.language = isArabic() ? "en" : "ar";
-      updateLanguage();
-    });
-
+    el("#language-toggle").addEventListener("click", () => { state.language = isArabic() ? "en" : "ar"; updateLanguage(); });
+    el("#theme-toggle").addEventListener("click", () => applyTheme(state.theme === "dark" ? "light" : "dark", true));
     el("#planner-form").addEventListener("submit", (event) => {
       event.preventDefault();
       const formData = new FormData(event.currentTarget);
-      const preferences = normalizePreferences({
-        traveler: formData.get("traveler"),
-        interest: formData.getAll("interest"),
-        time: formData.get("time"),
-        budget: formData.get("budget"),
-        walking: formData.get("walking")
-      });
+      const preferences = normalizePreferences({ traveler: formData.get("traveler"), interest: formData.getAll("interest"), time: formData.get("time"), budget: formData.get("budget"), walking: formData.get("walking") });
       if (!preferences.interest.length) {
-        const group = document.querySelector('[data-choice-group="interest"]');
-        group.setAttribute("aria-invalid", "true");
+        const group = document.querySelector('[data-choice-group="interest"]'); group.setAttribute("aria-invalid", "true");
         const existingError = el("#interest-error");
         if (existingError) existingError.textContent = text("chooseInterest");
         else group.insertAdjacentHTML("afterend", `<p class="form-error" id="interest-error" role="alert">${escapeHtml(text("chooseInterest"))}</p>`);
@@ -547,41 +526,25 @@
       }
       document.querySelector('[data-choice-group="interest"]').removeAttribute("aria-invalid");
       el("#interest-error")?.remove();
-      state.preferences = preferences;
-      state.plan = buildPlan(state.preferences);
-      renderPlan();
-      history.replaceState(null, "", "#results");
-      changeView("results");
+      state.preferences = preferences; state.plan = buildPlan(state.preferences); renderPlan();
+      history.replaceState(null, "", "#results"); changeView("results");
     });
-
-    el("#change-preference").addEventListener("click", () => {
-      history.replaceState(null, "", "#planner");
-      changeView("planner");
-    });
-
+    el("#change-preference").addEventListener("click", () => { history.replaceState(null, "", "#planner"); changeView("planner"); });
     el("#save-trip").addEventListener("click", () => {
       if (!state.plan) return;
-      localStorage.setItem(storageKey, JSON.stringify(state.plan));
-      el("#save-status").textContent = text("savedSuccess");
+      try { localStorage.setItem(storageKey, JSON.stringify(state.plan)); el("#save-status").textContent = text("savedSuccess"); } catch { el("#save-status").textContent = text("noSaved"); }
       renderSaved();
     });
-
     el("#load-example").addEventListener("click", () => {
-      state.preferences = normalizePreferences(window.ABHA_EXAMPLE_PREFERENCES);
-      state.plan = buildPlan(state.preferences);
-      localStorage.setItem(storageKey, JSON.stringify(state.plan));
-      renderChoices();
-      renderSaved();
+      state.preferences = normalizePreferences(window.ABHA_EXAMPLE_PREFERENCES); state.plan = buildPlan(state.preferences);
+      try { localStorage.setItem(storageKey, JSON.stringify(state.plan)); } catch { /* The guide still works without persistence. */ }
+      renderChoices(); renderSaved();
     });
   }
 
   function init() {
-    renderHomeInterests();
-    renderHomeGallery();
-    renderExplore();
-    renderChoices();
-    renderSaved();
-    bindEvents();
+    applyTheme(state.theme);
+    renderHomeInterests(); renderHomeGallery(); renderExplore(); renderChoices(); renderSaved(); bindEvents(); observeReveals();
     const initialView = window.location.hash.slice(1);
     if (["home", "explore", "planner", "results", "saved"].includes(initialView)) changeView(initialView);
   }
