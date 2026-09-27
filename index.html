@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A bilingual Abha Visitor Guide built from local destination data.">
+  <title>Abha Visitor Guide | دليل زائر أبها</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Abha Visitor Guide home">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span>Abha Guide</span>
+    </a>
+    <div class="header-actions">
+      <button class="language-button" type="button" id="language-toggle" aria-label="Switch language">العربية</button>
+      <button class="menu-button" type="button" id="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <a href="#home" data-view-link="home">Home</a>
+      <a href="#explore" data-view-link="explore">Explore</a>
+      <a href="#planner" data-view-link="planner">Plan my trip</a>
+      <a href="#saved" data-view-link="saved">Saved trip</a>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="view active" id="home" aria-labelledby="home-title">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">ABHA, ASIR</p>
+          <h1 id="home-title">Find your Abha moment.</h1>
+          <p class="hero-text">Choose what calls you—mountain views, heritage, cafés, food, or a family day out—and create a plan from the places in this guide.</p>
+          <a class="button button-primary" href="#planner" data-go-to="planner">Plan My Trip <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="hero-image-wrap">
+          <img class="hero-image" src="assets/images/alsoudah.jpg.jpeg" alt="Misty green mountain landscape in Al Soudah">
+          <div class="hero-badge"><span aria-hidden="true">✦</span> 16 places to discover</div>
+        </div>
+      </div>
+
+      <section class="section interests-section" aria-labelledby="interests-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">START HERE</p>
+            <h2 id="interests-title">What are you looking for?</h2>
+          </div>
+          <a class="text-link" href="#explore" data-go-to="explore">Explore all places <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="interest-grid" id="home-interests"></div>
+      </section>
+
+      <section class="home-callout" aria-label="Plan your visit">
+        <div>
+          <p class="eyebrow">YOUR DAY, YOUR WAY</p>
+          <h2>Five quick choices. A plan made for you.</h2>
+        </div>
+        <a class="button button-light" href="#planner" data-go-to="planner">Build my plan <span aria-hidden="true">→</span></a>
+      </section>
+    </section>
+
+    <section class="view" id="explore" aria-labelledby="explore-title" hidden>
+      <div class="page-intro">
+        <p class="eyebrow">EXPLORE ABHA</p>
+        <h1 id="explore-title">Places for every kind of day.</h1>
+        <p>Filter places using the guide’s categories and approved interest tags.</p>
+      </div>
+      <div class="filter-bar" id="filter-bar" aria-label="Filter destinations"></div>
+      <p class="result-count" id="place-count" aria-live="polite"></p>
+      <div class="place-grid" id="places-grid"></div>
+    </section>
+
+    <section class="view" id="planner" aria-labelledby="planner-title" hidden>
+      <div class="page-intro planner-intro">
+        <p class="eyebrow">TRIP PLANNER</p>
+        <h1 id="planner-title">Build a day that feels like you.</h1>
+        <p>Answer five quick questions. Recommendations use only the places and details in this guide.</p>
+      </div>
+      <form class="planner-form" id="planner-form">
+        <fieldset>
+          <legend><span class="step-number">1</span> <span data-question="traveler">Who are you traveling with?</span></legend>
+          <div class="choice-grid" data-choice-group="traveler"></div>
+        </fieldset>
+        <fieldset>
+          <legend><span class="step-number">2</span> <span data-question="interest">What do you love?</span></legend>
+          <div class="choice-grid" data-choice-group="interest"></div>
+        </fieldset>
+        <fieldset>
+          <legend><span class="step-number">3</span> <span data-question="time">How much time do you have?</span></legend>
+          <div class="choice-grid" data-choice-group="time"></div>
+        </fieldset>
+        <fieldset>
+          <legend><span class="step-number">4</span> <span data-question="budget">What is your budget?</span></legend>
+          <div class="choice-grid" data-choice-group="budget"></div>
+        </fieldset>
+        <fieldset>
+          <legend><span class="step-number">5</span> <span data-question="walking">What walking level works for you?</span></legend>
+          <div class="choice-grid" data-choice-group="walking"></div>
+        </fieldset>
+        <button class="button button-primary button-full" type="submit">Create My Trip <span aria-hidden="true">→</span></button>
+      </form>
+    </section>
+
+    <section class="view" id="results" aria-labelledby="results-title" hidden>
+      <div class="page-intro results-intro">
+        <p class="eyebrow">YOUR ABHA PLAN</p>
+        <h1 id="results-title">Your route is ready.</h1>
+        <p id="results-summary"></p>
+      </div>
+      <div id="planner-notices" aria-live="polite"></div>
+      <div class="trip-overview" id="trip-overview"></div>
+      <div class="itinerary" id="itinerary"></div>
+      <div class="results-actions">
+        <button class="button button-secondary" type="button" id="change-preference">Change Something</button>
+        <button class="button button-primary" type="button" id="save-trip">Save My Trip</button>
+      </div>
+      <p class="save-status" id="save-status" aria-live="polite"></p>
+    </section>
+
+    <section class="view" id="saved" aria-labelledby="saved-title" hidden>
+      <div class="page-intro">
+        <p class="eyebrow">SAVED IN THIS BROWSER</p>
+        <h1 id="saved-title">Your saved trip.</h1>
+        <p>Your choices stay on this device only. They are never sent anywhere.</p>
+      </div>
+      <div id="saved-trip-content"></div>
+      <button class="button button-secondary" type="button" id="load-example">Load example</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Abha Visitor Guide</p>
+    <p>Local guide data • Browser-only trip saving</p>
+  </footer>
+
+  <script src="sample-data/data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
