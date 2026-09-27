@@ -35,7 +35,7 @@ To see a ready-made example:
 ## Data notes
 
 - The guide displays only destinations, descriptions, map links, categories, costs, suitability, walking levels, indoor/outdoor labels, durations, best times, and weather alternatives from the supplied Excel file.
-- Curo appears in Explore, but has no map link in the source file, so it is never included in an automatic trip plan.
+- Curo appears in Explore with its supplied map link and can be included in automatic trips when it matches the selected source-based preferences.
 - All 16 supplied destinations use matching bundled local images from `assets/images/`; no external images are used. The Home page presents an editorial gallery, and **Explore** always provides access to every destination.
 - The visual light/dark preference is stored only with browser `localStorage`; light is the default. The Jacaranda, cloud, and mountain details are CSS-only.
 - Multiple planner interests can be selected at once.

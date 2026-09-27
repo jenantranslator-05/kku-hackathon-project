@@ -283,7 +283,6 @@
     if (cost >= budget[0] && cost <= budget[1]) score += 4;
     else if (allowOverBudget) score -= Math.min(5, Math.abs(cost - budget[1]) / 100);
     else score -= 20;
-    if (place.id === "curo") score -= 1000;
     return score;
   }
 
@@ -319,7 +318,7 @@
       aboveBudget = chosen.cost > maxBudget;
     }
     if (!chosen.selected.length) {
-      chosen = { selected: [places.find((place) => place.mapUrl && place.id !== "curo")], hours: 2, cost: 50 };
+      chosen = { selected: [places.find((place) => place.mapUrl)], hours: 2, cost: 50 };
       aboveBudget = chosen.cost > maxBudget;
     }
     const matched = new Set(chosen.selected.flatMap((place) => matchingInterests(place, preferences.interest)));

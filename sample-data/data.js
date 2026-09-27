@@ -259,7 +259,7 @@ window.ABHA_PLACES = [
     nameAr: "كيرو",
     descriptionEn: "Curo is a modern restaurant offering a variety of delicious dishes in a comfortable and welcoming atmosphere.",
     descriptionAr: "كيرو مطعم عصري يقدم مجموعة متنوعة من الأطباق اللذيذة في أجواء مريحة ومرحبة.",
-    mapUrl: null,
+    mapUrl: "https://maps.app.goo.gl/LbSaGp1SnfYA1xJo7?g_st=iw",
     category: "Restaurant / مطعم • Food / مأكولات",
     cost: "50-500SAR",
     suitableFor: "Families / عائلات • Friends / أصدقاء • Couples / أزواج • Food Lovers / محبو الطعام",
