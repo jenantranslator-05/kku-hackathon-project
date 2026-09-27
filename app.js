@@ -8,15 +8,16 @@
       home: "Home", explore: "Explore", planner: "Plan my trip", saved: "Saved trip",
       language: "العربية", openNav: "Open navigation", closeNav: "Close navigation",
       plan: "Plan My Trip", exploreAll: "Explore all places", start: "START HERE",
-      interestsTitle: "What are you looking for?", callout: "YOUR DAY, YOUR WAY",
-      calloutTitle: "Five quick choices. A plan made for you.", build: "Build my plan",
+      interestsTitle: "What are you looking for?", interestHint: "Explore places", approvedTag: "Approved tag",
+      galleryEyebrow: "DESTINATION GALLERY", galleryTitle: "A closer look at Abha.", galleryCopy: "From misty peaks to warm café corners, find the place that fits your day.", exploreDestination: "Explore this place",
+      callout: "YOUR DAY, YOUR WAY", calloutTitle: "Five quick choices. A plan made for you.", build: "Build my plan",
       exploreEyebrow: "EXPLORE ABHA", exploreTitle: "Places for every kind of day.",
       exploreText: "Filter places using the guide’s categories and approved interest tags.",
-      showing: "Showing {count} places", noPlaces: "No places match this filter.",
+      showing: "Showing {count} places", showingDestination: "Showing {place}", noPlaces: "No places match this filter.",
       plannerEyebrow: "TRIP PLANNER", plannerTitle: "Build a day that feels like you.",
       plannerText: "Answer five quick questions. Recommendations use only the places and details in this guide.",
-      qTraveler: "Who are you traveling with?", qInterest: "What do you love?", qTime: "How much time do you have?",
-      qBudget: "What is your budget?", qWalking: "What walking level works for you?", create: "Create My Trip",
+      qTraveler: "Who are you traveling with?", qInterest: "What do you love? Select all that apply.", qTime: "How much time do you have?",
+      qBudget: "What is your budget?", qWalking: "What walking level works for you?", create: "Create My Trip", chooseInterest: "Choose at least one interest to create your trip.",
       resultEyebrow: "YOUR ABHA PLAN", resultTitle: "Your route is ready.",
       resultSummary: "A {time} plan shaped around {interest}.",
       change: "Change Something", save: "Save My Trip", savedSuccess: "Your trip has been saved in this browser.",
@@ -25,10 +26,10 @@
       loadExample: "Load example", noSaved: "No trip has been saved yet. Build a plan or load the built-in example.",
       map: "Open map", mapUnavailable: "Map link not available", imageUnavailable: "Image not available",
       category: "Category", cost: "Cost", walking: "Walking", setting: "Setting", duration: "Duration", bestTime: "Best time",
-      selected: "Selected preferences", estimate: "Estimated minimum", totalTime: "Planned time", day: "Day", hours: "hours",
+      selected: "Selected interests", estimate: "Estimated minimum", totalTime: "Planned time", day: "Day", hours: "hours",
       weather: "Weather alternative: {place}", aboveBudget: "This is the closest matching plan, but its estimated minimum cost is above your selected budget.",
       solo: "Solo suitability is not specifically listed in the source data.", noMatch: "No exact match was found for every choice. This plan uses the closest places from the guide.",
-      weatherNone: "No weather alternative is listed.", all: "All", nature: "Nature", cafes: "Cafés", food: "Food", heritage: "Heritage", photography: "Photography", family: "Family", adventures: "Adventures",
+      all: "All", nature: "Nature", cafes: "Cafés", food: "Food", heritage: "Heritage", photography: "Photography", family: "Family", adventures: "Adventures",
       traveler: "Travelers", interest: "Interest", time: "Time", budget: "Budget", walkingLabel: "Walking",
       family: "Family", friends: "Friends", couple: "Couple", soloOption: "Solo",
       twoHours: "2 hours", halfDay: "Half day", oneDay: "1 day", twoDays: "2 days",
@@ -41,15 +42,16 @@
       home: "الرئيسية", explore: "استكشف", planner: "خطط رحلتك", saved: "الرحلة المحفوظة",
       language: "English", openNav: "فتح القائمة", closeNav: "إغلاق القائمة",
       plan: "خطط رحلتك", exploreAll: "استكشف كل الأماكن", start: "ابدأ من هنا",
-      interestsTitle: "ما الذي تبحث عنه؟", callout: "يومك بطريقتك",
-      calloutTitle: "خمسة اختيارات سريعة. وخطة تناسبك.", build: "أنشئ خطتي",
+      interestsTitle: "ما الذي تبحث عنه؟", interestHint: "استكشف الأماكن", approvedTag: "وسم معتمد",
+      galleryEyebrow: "معرض الوجهات", galleryTitle: "نظرة أقرب إلى أبها.", galleryCopy: "من القمم الضبابية إلى زوايا المقاهي الدافئة، اعثر على المكان المناسب ليومك.", exploreDestination: "استكشف هذا المكان",
+      callout: "يومك بطريقتك", calloutTitle: "خمسة اختيارات سريعة. وخطة تناسبك.", build: "أنشئ خطتي",
       exploreEyebrow: "استكشف أبها", exploreTitle: "أماكن لكل نوع من الأيام.",
       exploreText: "صفِّ الأماكن باستخدام فئات الدليل ووسوم الاهتمامات المعتمدة.",
-      showing: "عرض {count} أماكن", noPlaces: "لا توجد أماكن تطابق هذا الفلتر.",
+      showing: "عرض {count} أماكن", showingDestination: "عرض {place}", noPlaces: "لا توجد أماكن تطابق هذا الفلتر.",
       plannerEyebrow: "مخطط الرحلة", plannerTitle: "اصنع يوماً يشبهك.",
       plannerText: "أجب عن خمسة أسئلة سريعة. تستخدم الاقتراحات الأماكن والتفاصيل الموجودة في هذا الدليل فقط.",
-      qTraveler: "مع من تسافر؟", qInterest: "ما الذي تحبه؟", qTime: "كم من الوقت لديك؟",
-      qBudget: "ما ميزانيتك؟", qWalking: "ما مستوى المشي المناسب لك؟", create: "أنشئ رحلتي",
+      qTraveler: "مع من تسافر؟", qInterest: "ما الذي تحبه؟ اختر كل ما ينطبق.", qTime: "كم من الوقت لديك؟",
+      qBudget: "ما ميزانيتك؟", qWalking: "ما مستوى المشي المناسب لك؟", create: "أنشئ رحلتي", chooseInterest: "اختر اهتمامًا واحدًا على الأقل لإنشاء رحلتك.",
       resultEyebrow: "خطتك في أبها", resultTitle: "مسارك جاهز.",
       resultSummary: "خطة لمدة {time} مبنية حول {interest}.",
       change: "غيّر شيئًا", save: "احفظ رحلتي", savedSuccess: "تم حفظ رحلتك في هذا المتصفح.",
@@ -58,10 +60,10 @@
       loadExample: "تحميل مثال", noSaved: "لم تُحفظ أي رحلة بعد. أنشئ خطة أو حمّل المثال المدمج.",
       map: "فتح الخريطة", mapUnavailable: "رابط الخريطة غير متوفر", imageUnavailable: "الصورة غير متوفرة",
       category: "الفئة", cost: "التكلفة", walking: "المشي", setting: "المكان", duration: "المدة", bestTime: "أفضل وقت",
-      selected: "الاختيارات", estimate: "الحد الأدنى التقديري", totalTime: "الوقت المخطط", day: "اليوم", hours: "ساعات",
+      selected: "الاهتمامات المختارة", estimate: "الحد الأدنى التقديري", totalTime: "الوقت المخطط", day: "اليوم", hours: "ساعات",
       weather: "بديل الطقس: {place}", aboveBudget: "هذه أقرب خطة مطابقة، لكن الحد الأدنى التقديري لتكلفتها أعلى من ميزانيتك المحددة.",
       solo: "لا تُذكر ملاءمة المسافر المنفرد تحديدًا في بيانات المصدر.", noMatch: "لم يُعثر على تطابق دقيق لكل الاختيارات. تستخدم هذه الخطة أقرب الأماكن من الدليل.",
-      weatherNone: "لا يوجد بديل طقس مذكور.", all: "الكل", nature: "طبيعة", cafes: "مقاهي", food: "طعام", heritage: "تراث", photography: "تصوير", family: "عائلات", adventures: "مغامرات",
+      all: "الكل", nature: "طبيعة", cafes: "مقاهي", food: "طعام", heritage: "تراث", photography: "تصوير", family: "عائلات", adventures: "مغامرات",
       traveler: "المسافرون", interest: "الاهتمام", time: "الوقت", budget: "الميزانية", walkingLabel: "المشي",
       family: "عائلة", friends: "أصدقاء", couple: "زوجان", soloOption: "منفرد",
       twoHours: "ساعتان", halfDay: "نصف يوم", oneDay: "يوم واحد", twoDays: "يومان",
@@ -84,7 +86,8 @@
   const state = {
     language: "en",
     filter: "All",
-    preferences: { ...window.ABHA_EXAMPLE_PREFERENCES },
+    featuredPlaceId: null,
+    preferences: normalizePreferences(window.ABHA_EXAMPLE_PREFERENCES),
     plan: null
   };
 
@@ -97,9 +100,20 @@
     return String(value).replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#039;", '"': "&quot;" }[char]));
   }
 
+  function normalizePreferences(preferences = {}) {
+    const rawInterests = Array.isArray(preferences.interest) ? preferences.interest : [preferences.interest];
+    return {
+      traveler: choiceOptions.traveler.includes(preferences.traveler) ? preferences.traveler : "Family",
+      interest: [...new Set(rawInterests.filter((interest) => choiceOptions.interest.includes(interest)))],
+      time: choiceOptions.time.includes(preferences.time) ? preferences.time : "Half day",
+      budget: choiceOptions.budget.includes(preferences.budget) ? preferences.budget : "100–300 SAR",
+      walking: choiceOptions.walking.includes(preferences.walking) ? preferences.walking : "Moderate"
+    };
+  }
+
   function nameFor(place) { return isArabic() ? place.nameAr : place.nameEn; }
+  function oppositeNameFor(place) { return isArabic() ? place.nameEn : place.nameAr; }
   function descriptionFor(place) { return isArabic() ? place.descriptionAr : place.descriptionEn; }
-  function locale() { return isArabic() ? "ar-SA" : "en"; }
   function valueLabel(value) {
     const lookup = {
       "Solo": "soloOption", "Couple": "couple", "Family": "family", "Friends": "friends",
@@ -111,12 +125,31 @@
     return text(lookup[value] || value);
   }
 
+  function interestsLabel(selectedInterests) {
+    const values = normalizePreferences({ interest: selectedInterests }).interest.map(valueLabel);
+    return new Intl.ListFormat(isArabic() ? "ar-SA" : "en", { style: "long", type: "conjunction" }).format(values);
+  }
+
   function renderHomeInterests() {
     el("#home-interests").innerHTML = interests.map((interest) => `
       <button class="interest-button" type="button" data-interest="${interest}">
         ${escapeHtml(valueLabel(interest))}
-        <span>${escapeHtml(interest === "Photography" || interest === "Adventures" ? "Approved tag" : "Explore places")}</span>
+        <span>${escapeHtml(interest === "Photography" || interest === "Adventures" ? text("approvedTag") : text("interestHint"))}</span>
       </button>`).join("");
+  }
+
+  function renderHomeGallery() {
+    el("#home-gallery").innerHTML = places.map((place) => `
+      <article class="gallery-card">
+        <div class="gallery-media">
+          <img src="${place.image}" alt="${escapeHtml(nameFor(place))}" loading="lazy">
+        </div>
+        <div class="gallery-content">
+          <p class="gallery-category">${escapeHtml(place.category)}</p>
+          <h3>${escapeHtml(nameFor(place))}<span lang="${isArabic() ? "en" : "ar"}" dir="${isArabic() ? "ltr" : "rtl"}">${escapeHtml(oppositeNameFor(place))}</span></h3>
+          <button class="gallery-link" type="button" data-explore-destination="${place.id}" aria-label="${escapeHtml(`${text("exploreDestination")}: ${nameFor(place)}`)}">${escapeHtml(text("exploreDestination"))} <span aria-hidden="true">→</span></button>
+        </div>
+      </article>`).join("");
   }
 
   function filterMatches(place, filter) {
@@ -137,7 +170,7 @@
     const map = place.mapUrl
       ? `<a class="map-link" href="${place.mapUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(text("map"))} <span aria-hidden="true">↗</span></a>`
       : `<p class="map-unavailable">${escapeHtml(text("mapUnavailable"))}</p>`;
-    return `<article class="place-card">
+    return `<article class="place-card" data-place-card="${place.id}" tabindex="-1">
       <div class="place-media">${image}</div>
       <div class="place-content">
         <div class="place-title">
@@ -158,18 +191,23 @@
 
   function renderExplore() {
     const filters = ["All", ...interests];
-    el("#filter-bar").innerHTML = filters.map((filter) => `<button class="filter-button ${state.filter === filter ? "active" : ""}" type="button" data-filter="${filter}" aria-pressed="${state.filter === filter}">${escapeHtml(filter === "All" ? text("all") : valueLabel(filter))}</button>`).join("");
-    const matching = places.filter((place) => filterMatches(place, state.filter));
-    el("#place-count").textContent = text("showing").replace("{count}", matching.length);
+    el("#filter-bar").innerHTML = filters.map((filter) => `<button class="filter-button ${state.filter === filter && !state.featuredPlaceId ? "active" : ""}" type="button" data-filter="${filter}" aria-pressed="${state.filter === filter && !state.featuredPlaceId}">${escapeHtml(filter === "All" ? text("all") : valueLabel(filter))}</button>`).join("");
+    const featured = state.featuredPlaceId ? places.find((place) => place.id === state.featuredPlaceId) : null;
+    const matching = featured ? [featured] : places.filter((place) => filterMatches(place, state.filter));
+    el("#place-count").textContent = featured
+      ? text("showingDestination").replace("{place}", nameFor(featured))
+      : text("showing").replace("{count}", matching.length);
     el("#places-grid").innerHTML = matching.length ? matching.map(placeCard).join("") : `<div class="empty-state">${escapeHtml(text("noPlaces"))}</div>`;
   }
 
   function renderChoices() {
     Object.entries(choiceOptions).forEach(([key, options]) => {
       const container = document.querySelector(`[data-choice-group="${key}"]`);
+      const multiple = key === "interest";
       container.innerHTML = options.map((option, index) => {
         const id = `${key}-${index}`;
-        return `<input class="choice-input" type="radio" name="${key}" id="${id}" value="${escapeHtml(option)}" ${state.preferences[key] === option ? "checked" : ""} required>
+        const checked = multiple ? state.preferences.interest.includes(option) : state.preferences[key] === option;
+        return `<input class="choice-input" type="${multiple ? "checkbox" : "radio"}" name="${key}" id="${id}" value="${escapeHtml(option)}" ${checked ? "checked" : ""}>
           <label class="choice-label" for="${id}">${escapeHtml(valueLabel(option))}</label>`;
       }).join("");
     });
@@ -182,8 +220,7 @@
 
   function averageHours(place) {
     const values = (place.duration.match(/\d+/g) || []).map(Number);
-    if (values.length === 1) return values[0];
-    return (values[0] + values[1]) / 2;
+    return values.length === 1 ? values[0] : (values[0] + values[1]) / 2;
   }
 
   function targetHours(time) {
@@ -199,13 +236,17 @@
     }[budget] || [0, Infinity];
   }
 
-  function interestMatches(place, interest) {
+  function matchesInterest(place, interest) {
     if (interest === "Photography" || interest === "Adventures") return place.approvedTags.includes(interest);
     if (interest === "Nature") return /Nature/i.test(place.category);
     if (interest === "Cafés") return /Caf[eé]|Coffee/i.test(place.category);
     if (interest === "Food") return /Food|Restaurant|Pizza|Italian|Caf[eé]|Coffee|Bakery|Desserts/i.test(place.category);
     if (interest === "Heritage") return /Heritage/i.test(place.category);
     return false;
+  }
+
+  function matchingInterests(place, selectedInterests) {
+    return selectedInterests.filter((interest) => matchesInterest(place, interest));
   }
 
   function travelerMatches(place, traveler) {
@@ -224,7 +265,7 @@
     let score = 0;
     const budget = budgetRange(preferences.budget);
     const cost = minCost(place);
-    if (interestMatches(place, preferences.interest)) score += 9;
+    score += matchingInterests(place, preferences.interest).length * 9;
     if (travelerMatches(place, preferences.traveler)) score += preferences.traveler === "Solo" ? 0 : 3;
     if (walkingMatches(place, preferences.walking)) score += 3;
     if (cost >= budget[0] && cost <= budget[1]) score += 4;
@@ -234,9 +275,10 @@
     return score;
   }
 
-  function buildPlan(preferences) {
+  function buildPlan(rawPreferences) {
+    const preferences = normalizePreferences(rawPreferences);
     const target = targetHours(preferences.time);
-    const [minBudget, maxBudget] = budgetRange(preferences.budget);
+    const [, maxBudget] = budgetRange(preferences.budget);
     const candidates = places
       .filter((place) => place.mapUrl)
       .map((place) => ({ place, score: scorePlace(place, preferences, false) }))
@@ -250,7 +292,7 @@
         const place = item.place;
         const placeHours = averageHours(place);
         const placeCost = minCost(place);
-        const hasInterest = interestMatches(place, preferences.interest);
+        const hasInterest = matchingInterests(place, preferences.interest).length > 0;
         const canFitTime = selected.length === 0 || hours + placeHours <= target;
         const canFitBudget = cost + placeCost <= maxBudget;
         if (canFitTime && (canFitBudget || canExceed) && (item.score > -10 || hasInterest)) {
@@ -263,42 +305,44 @@
       return { selected, hours, cost };
     };
 
-    let normal = choose(candidates, false);
-    let aboveBudget = normal.cost > maxBudget;
-    if (!normal.selected.length || !normal.selected.some((place) => interestMatches(place, preferences.interest))) {
+    let chosen = choose(candidates, false);
+    let aboveBudget = chosen.cost > maxBudget;
+    const chosenInterestCount = new Set(chosen.selected.flatMap((place) => matchingInterests(place, preferences.interest))).size;
+    if (!chosen.selected.length || !chosenInterestCount) {
       const fallbackCandidates = places
         .filter((place) => place.mapUrl)
         .map((place) => ({ place, score: scorePlace(place, preferences, true) }))
         .sort((a, b) => b.score - a.score);
-      normal = choose(fallbackCandidates, true);
-      aboveBudget = normal.cost > maxBudget;
+      chosen = choose(fallbackCandidates, true);
+      aboveBudget = chosen.cost > maxBudget;
     }
 
-    if (!normal.selected.length) {
-      normal = { selected: [places.find((place) => place.mapUrl && place.id !== "curo")], hours: 2, cost: 50 };
-      aboveBudget = normal.cost > maxBudget;
+    if (!chosen.selected.length) {
+      chosen = { selected: [places.find((place) => place.mapUrl && place.id !== "curo")], hours: 2, cost: 50 };
+      aboveBudget = chosen.cost > maxBudget;
     }
 
-    const exact = normal.selected.some((place) => interestMatches(place, preferences.interest)) &&
-      (preferences.traveler === "Solo" || normal.selected.some((place) => travelerMatches(place, preferences.traveler))) &&
-      normal.selected.some((place) => walkingMatches(place, preferences.walking));
+    const matched = new Set(chosen.selected.flatMap((place) => matchingInterests(place, preferences.interest)));
+    const exact = matched.size === preferences.interest.length &&
+      (preferences.traveler === "Solo" || chosen.selected.some((place) => travelerMatches(place, preferences.traveler))) &&
+      chosen.selected.some((place) => walkingMatches(place, preferences.walking));
 
     return {
-      preferences: { ...preferences },
-      places: normal.selected,
-      hours: normal.hours,
-      cost: normal.cost,
+      preferences,
+      places: chosen.selected,
+      hours: chosen.hours,
+      cost: chosen.cost,
       target,
       dayCount: preferences.time === "2 days" ? 2 : 1,
       aboveBudget,
-      exact,
-      minBudget
+      exact
     };
   }
 
   function renderPlan() {
     const plan = state.plan;
     if (!plan) return;
+    plan.preferences = normalizePreferences(plan.preferences);
     const notices = [];
     if (plan.preferences.traveler === "Solo") notices.push(`<p class="notice">${escapeHtml(text("solo"))}</p>`);
     if (!plan.exact) notices.push(`<p class="notice">${escapeHtml(text("noMatch"))}</p>`);
@@ -307,10 +351,10 @@
 
     el("#results-summary").textContent = text("resultSummary")
       .replace("{time}", valueLabel(plan.preferences.time))
-      .replace("{interest}", valueLabel(plan.preferences.interest));
+      .replace("{interest}", interestsLabel(plan.preferences.interest));
 
     el("#trip-overview").innerHTML = `
-      <div class="overview-item"><span>${escapeHtml(text("selected"))}</span><strong>${escapeHtml(valueLabel(plan.preferences.interest))}</strong></div>
+      <div class="overview-item"><span>${escapeHtml(text("selected"))}</span><strong>${escapeHtml(interestsLabel(plan.preferences.interest))}</strong></div>
       <div class="overview-item"><span>${escapeHtml(text("estimate"))}</span><strong>${escapeHtml(plan.cost)} SAR</strong></div>
       <div class="overview-item"><span>${escapeHtml(text("totalTime"))}</span><strong>${escapeHtml(plan.hours % 1 ? plan.hours.toFixed(1) : plan.hours)} ${escapeHtml(text("hours"))}</strong></div>
       <div class="overview-item"><span>${escapeHtml(text("budget"))}</span><strong>${escapeHtml(valueLabel(plan.preferences.budget))}</strong></div>`;
@@ -363,7 +407,8 @@
     }
     try {
       const plan = JSON.parse(saved);
-      el("#saved-trip-content").innerHTML = `<div class="saved-card"><h2>${escapeHtml(text("savedTitle"))}</h2><p>${escapeHtml(text("resultSummary").replace("{time}", valueLabel(plan.preferences.time)).replace("{interest}", valueLabel(plan.preferences.interest)))}</p><button class="button button-primary" type="button" id="open-saved-plan">${escapeHtml(text("saved"))}</button></div>`;
+      plan.preferences = normalizePreferences(plan.preferences);
+      el("#saved-trip-content").innerHTML = `<div class="saved-card"><h2>${escapeHtml(text("savedTitle"))}</h2><p>${escapeHtml(text("resultSummary").replace("{time}", valueLabel(plan.preferences.time)).replace("{interest}", interestsLabel(plan.preferences.interest)))}</p><button class="button button-primary" type="button" id="open-saved-plan">${escapeHtml(text("saved"))}</button></div>`;
       el("#open-saved-plan")?.addEventListener("click", () => {
         state.plan = plan;
         renderPlan();
@@ -386,16 +431,18 @@
     const navigation = ["home", "explore", "planner", "saved"];
     all("[data-view-link]").forEach((link, index) => { link.textContent = text(navigation[index]); });
     el(".brand").setAttribute("aria-label", `${text("footerTitle")} ${text("home")}`);
-    el(".hero .eyebrow").textContent = "ABHA, ASIR";
     el("#home-title").textContent = text("heroTitle");
     el(".hero-text").textContent = text("heroText");
     el(".hero-badge").innerHTML = `<span aria-hidden="true">✦</span> ${escapeHtml(text("heroBadge"))}`;
-    el("[data-go-to='planner']").innerHTML = `${escapeHtml(text("plan"))} <span aria-hidden="true">→</span>`;
     const plannerLinks = all("[data-go-to='planner']");
+    if (plannerLinks[0]) plannerLinks[0].innerHTML = `${escapeHtml(text("plan"))} <span aria-hidden="true">→</span>`;
     if (plannerLinks[1]) plannerLinks[1].innerHTML = `${escapeHtml(text("build"))} <span aria-hidden="true">→</span>`;
     el(".section-heading .eyebrow").textContent = text("start");
     el("#interests-title").textContent = text("interestsTitle");
     el(".text-link").innerHTML = `${escapeHtml(text("exploreAll"))} <span aria-hidden="true">→</span>`;
+    el("#gallery-eyebrow").textContent = text("galleryEyebrow");
+    el("#gallery-title").textContent = text("galleryTitle");
+    el("#gallery-copy").textContent = text("galleryCopy");
     el(".home-callout .eyebrow").textContent = text("callout");
     el(".home-callout h2").textContent = text("calloutTitle");
     el(".home-callout .button").innerHTML = `${escapeHtml(text("build"))} <span aria-hidden="true">→</span>`;
@@ -420,6 +467,7 @@
     el(".site-footer p:first-child").textContent = text("footerTitle");
     el(".site-footer p:last-child").textContent = text("footerText");
     renderHomeInterests();
+    renderHomeGallery();
     renderExplore();
     renderChoices();
     if (state.plan) renderPlan();
@@ -437,20 +485,32 @@
       if (link) {
         event.preventDefault();
         const view = link.dataset.goTo || link.dataset.viewLink;
+        if (view === "explore") state.featuredPlaceId = null;
         history.replaceState(null, "", `#${view}`);
         changeView(view);
       }
       const filter = event.target.closest("[data-filter]");
       if (filter) {
         state.filter = filter.dataset.filter;
+        state.featuredPlaceId = null;
         renderExplore();
       }
       const interest = event.target.closest("[data-interest]");
       if (interest) {
         state.filter = interest.dataset.interest;
+        state.featuredPlaceId = null;
         history.replaceState(null, "", "#explore");
         renderExplore();
         changeView("explore");
+      }
+      const destination = event.target.closest("[data-explore-destination]");
+      if (destination) {
+        state.featuredPlaceId = destination.dataset.exploreDestination;
+        state.filter = "All";
+        history.replaceState(null, "", "#explore");
+        renderExplore();
+        changeView("explore");
+        requestAnimationFrame(() => el(`[data-place-card="${state.featuredPlaceId}"]`)?.focus());
       }
     });
 
@@ -470,7 +530,24 @@
     el("#planner-form").addEventListener("submit", (event) => {
       event.preventDefault();
       const formData = new FormData(event.currentTarget);
-      state.preferences = Object.fromEntries(formData.entries());
+      const preferences = normalizePreferences({
+        traveler: formData.get("traveler"),
+        interest: formData.getAll("interest"),
+        time: formData.get("time"),
+        budget: formData.get("budget"),
+        walking: formData.get("walking")
+      });
+      if (!preferences.interest.length) {
+        const group = document.querySelector('[data-choice-group="interest"]');
+        group.setAttribute("aria-invalid", "true");
+        const existingError = el("#interest-error");
+        if (existingError) existingError.textContent = text("chooseInterest");
+        else group.insertAdjacentHTML("afterend", `<p class="form-error" id="interest-error" role="alert">${escapeHtml(text("chooseInterest"))}</p>`);
+        return;
+      }
+      document.querySelector('[data-choice-group="interest"]').removeAttribute("aria-invalid");
+      el("#interest-error")?.remove();
+      state.preferences = preferences;
       state.plan = buildPlan(state.preferences);
       renderPlan();
       history.replaceState(null, "", "#results");
@@ -490,7 +567,7 @@
     });
 
     el("#load-example").addEventListener("click", () => {
-      state.preferences = { ...window.ABHA_EXAMPLE_PREFERENCES };
+      state.preferences = normalizePreferences(window.ABHA_EXAMPLE_PREFERENCES);
       state.plan = buildPlan(state.preferences);
       localStorage.setItem(storageKey, JSON.stringify(state.plan));
       renderChoices();
@@ -500,6 +577,7 @@
 
   function init() {
     renderHomeInterests();
+    renderHomeGallery();
     renderExplore();
     renderChoices();
     renderSaved();

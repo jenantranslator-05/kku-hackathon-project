@@ -142,7 +142,7 @@ window.ABHA_PLACES = [
     duration: "1-2 HOURS",
     bestTime: "EVENING",
     weatherAlternative: "HIGH CITY",
-    image: null,
+    image: "assets/images/le-premier.jpg.jpeg",
     approvedTags: []
   },
   {
@@ -196,7 +196,7 @@ window.ABHA_PLACES = [
     duration: "1-2 HOURS",
     bestTime: "EVENING",
     weatherAlternative: "No change needed",
-    image: null,
+    image: "assets/images/row.jpg.jpeg",
     approvedTags: []
   },
   {
@@ -214,7 +214,7 @@ window.ABHA_PLACES = [
     duration: "1-2 HOURS",
     bestTime: "EVENING",
     weatherAlternative: "No change needed",
-    image: null,
+    image: "assets/images/hayez.jpg.jpeg",
     approvedTags: []
   },
   {
@@ -232,7 +232,7 @@ window.ABHA_PLACES = [
     duration: "1-2 HOURS",
     bestTime: "EVENING",
     weatherAlternative: "No change needed",
-    image: null,
+    image: "assets/images/black-by-location.jpg.jpeg",
     approvedTags: []
   },
   {
@@ -250,7 +250,7 @@ window.ABHA_PLACES = [
     duration: "1-2 HOURS",
     bestTime: "EVENING",
     weatherAlternative: "No change needed",
-    image: null,
+    image: "assets/images/lantico.jpg.jpeg",
     approvedTags: []
   },
   {
@@ -268,7 +268,7 @@ window.ABHA_PLACES = [
     duration: "1-2 HOURS",
     bestTime: "EVENING",
     weatherAlternative: "No change needed",
-    image: null,
+    image: "assets/images/curo.jpg.jpeg",
     approvedTags: []
   },
   {
@@ -286,14 +286,14 @@ window.ABHA_PLACES = [
     duration: "1-2 HOURS",
     bestTime: "EVENING",
     weatherAlternative: "No change needed",
-    image: null,
+    image: "assets/images/red-basil.jpg.jpeg",
     approvedTags: []
   }
 ];
 
 window.ABHA_EXAMPLE_PREFERENCES = {
   traveler: "Family",
-  interest: "Nature",
+  interest: ["Nature"],
   time: "Half day",
   budget: "100–300 SAR",
   walking: "Moderate"

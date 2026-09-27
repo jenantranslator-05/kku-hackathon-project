@@ -161,6 +161,46 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--purple); outlin
 .interest-button:nth-child(3n) { background: #edf4ef; }
 .interest-button span { display: block; margin-top: .32rem; color: var(--muted); font-weight: 400; font-size: .82rem; }
 .interest-button:hover, .interest-button:focus-visible { border-color: var(--purple); box-shadow: var(--shadow); }
+.destination-gallery-section { padding-top: 0; }
+.gallery-heading { display: block; }
+.gallery-heading > div { max-width: 61ch; }
+.gallery-heading > div > p:last-child { margin: .7rem 0 0; color: var(--muted); }
+.destination-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8rem;
+}
+.gallery-card {
+  display: grid;
+  overflow: hidden;
+  background: var(--beige-light);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: 0 5px 18px rgba(46, 67, 48, .06);
+}
+.gallery-media { aspect-ratio: 4 / 5; background: var(--purple); }
+.gallery-media img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-content { display: grid; gap: .35rem; padding: .8rem; }
+.gallery-category { margin: 0; color: var(--purple-dark); font-size: .68rem; font-weight: 800; line-height: 1.35; }
+.gallery-content h3 { font-family: Arial, Tahoma, sans-serif; font-size: 1rem; }
+.gallery-content h3 span { display: block; margin-top: .2rem; color: var(--green); font-size: .76rem; font-weight: 700; }
+.gallery-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  margin-top: .15rem;
+  padding: .4rem 0;
+  color: var(--purple-dark);
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--line);
+  font-size: .81rem;
+  font-weight: 800;
+  text-align: start;
+}
+.gallery-link:hover, .gallery-link:focus-visible { color: var(--green-dark); }
+html[dir="rtl"] .gallery-link span { transform: rotate(180deg); }
 .home-callout { display: grid; gap: 1rem; margin-bottom: 1.5rem; padding: 1.65rem; background: var(--green); border-radius: var(--radius-lg); color: #fff; }
 .home-callout h2, .home-callout .eyebrow { color: #fff; }
 .home-callout .eyebrow { opacity: .75; }
@@ -198,8 +238,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--purple); outlin
 .choice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .65rem; margin-top: .75rem; }
 .choice-input { position: absolute; opacity: 0; pointer-events: none; }
 .choice-label { display: grid; place-items: center; min-height: 52px; padding: .6rem; color: var(--green-dark); border: 1px solid var(--line); border-radius: 10px; text-align: center; font-size: .9rem; font-weight: 700; }
-.choice-input:checked + .choice-label { background: #e8f1eb; border: 2px solid var(--green); color: var(--green-dark); }
+.choice-input:checked + .choice-label { background: #f2edf8; border: 2px solid var(--purple); color: var(--purple-dark); }
 .choice-input:focus-visible + .choice-label { outline: 3px solid var(--purple); outline-offset: 2px; }
+.choice-grid[aria-invalid="true"] { outline: 2px solid #ad6b23; outline-offset: 5px; border-radius: 10px; }
+.form-error { margin: .85rem 0 0; color: #8a4106; font-size: .9rem; font-weight: 700; }
 
 .notice { margin: .85rem 0; padding: .85rem 1rem; border-inline-start: 4px solid var(--purple); background: #f2edf8; color: #402b58; border-radius: 0 10px 10px 0; font-size: .93rem; }
 .notice.warning { border-color: #ad6b23; background: #fff4e5; color: #6e3e09; }
@@ -240,6 +282,8 @@ html[dir="rtl"] .placeholder-art::before { transform: rotate(-45deg); }
   .hero { grid-template-columns: 1.05fr .95fr; align-items: stretch; padding-block: 3.5rem 4.5rem; }
   .hero-image-wrap, .hero-image { min-height: 450px; }
   .interest-grid { grid-template-columns: repeat(3, 1fr); }
+  .destination-gallery { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .gallery-content { padding: 1rem; }
   .home-callout { grid-template-columns: 1fr auto; align-items: center; padding: 2.2rem; }
   .place-grid { grid-template-columns: repeat(2, 1fr); }
   .planner-form { max-width: 820px; margin: auto; }
@@ -251,6 +295,7 @@ html[dir="rtl"] .placeholder-art::before { transform: rotate(-45deg); }
 @media (min-width: 1020px) {
   .site-nav a { padding-inline: .85rem; }
   .place-grid { grid-template-columns: repeat(3, 1fr); }
+  .destination-gallery { grid-template-columns: repeat(4, 1fr); }
   .place-media { min-height: 210px; }
   .planner-form fieldset { padding: 1.35rem; }
 }

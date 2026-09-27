@@ -2,7 +2,7 @@
 
 ## What it does
 
-Abha Visitor Guide is a bilingual Arabic and English guide for planning a visit to Abha. It lets visitors explore 16 destinations, filter places by interest, build a trip from five preferences, see only Excel-provided weather alternatives, and save a trip locally in their browser.
+Abha Visitor Guide is a bilingual Arabic and English guide for planning a visit to Abha. It includes an all-local-image destination gallery, lets visitors explore 16 destinations, filter places by interest, select one or more trip interests, build a trip from five preferences, see only Excel-provided weather alternatives, and save a trip locally in their browser.
 
 ## Who it is for
 
@@ -35,7 +35,8 @@ To see a ready-made example:
 
 - The guide displays only destinations, descriptions, map links, categories, costs, suitability, walking levels, indoor/outdoor labels, durations, best times, and weather alternatives from the supplied Excel file.
 - Curo appears in Explore, but has no map link in the source file, so it is never included in an automatic trip plan.
-- Places without matching local images use a clearly labelled local placeholder.
+- All 16 supplied destinations use matching bundled local images from `assets/images/`; no external images are used.
+- Multiple planner interests can be selected at once.
 - Trips are saved with browser `localStorage`; nothing a visitor types is sent to GitHub or any server.
 - The app has no timers or levels.
 
