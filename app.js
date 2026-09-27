@@ -169,9 +169,15 @@
       </button>`).join("");
   }
 
+  function destinationAccent(place) {
+    if (/Nature/i.test(place.category)) return "accent-nature";
+    if (/Heritage/i.test(place.category)) return "accent-heritage";
+    return "";
+  }
+
   function renderHomeGallery() {
     el("#home-gallery").innerHTML = places.map((place) => `
-      <article class="gallery-card reveal-item">
+      <article class="gallery-card reveal-item ${destinationAccent(place)}">
         <div class="gallery-media">
           <img src="${place.image}" alt="${escapeHtml(nameFor(place))}" loading="lazy">
         </div>
@@ -202,7 +208,7 @@
     const map = place.mapUrl
       ? `<a class="map-link" href="${place.mapUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(text("map"))} <span aria-hidden="true">↗</span></a>`
       : `<p class="map-unavailable">${escapeHtml(text("mapUnavailable"))}</p>`;
-    return `<article class="place-card reveal-item" data-place-card="${place.id}" tabindex="-1">
+    return `<article class="place-card reveal-item ${destinationAccent(place)}" data-place-card="${place.id}" tabindex="-1">
       <div class="place-media">${image}</div>
       <div class="place-content">
         <div class="place-title"><h2>${escapeHtml(nameFor(place))}<span class="place-name-ar" lang="ar" dir="rtl">${escapeHtml(place.nameAr)}</span></h2></div>
@@ -236,8 +242,9 @@
       container.innerHTML = options.map((option, index) => {
         const id = `${key}-${index}`;
         const checked = multiple ? state.preferences.interest.includes(option) : state.preferences[key] === option;
-        return `<input class="choice-input" type="${multiple ? "checkbox" : "radio"}" name="${key}" id="${id}" value="${escapeHtml(option)}" ${checked ? "checked" : ""}>
-          <label class="choice-label" for="${id}">${escapeHtml(valueLabel(option))}</label>`;
+        const accentClass = key === "interest" && option === "Nature" ? "choice-nature" : "";
+        return `<input class="choice-input ${accentClass}" type="${multiple ? "checkbox" : "radio"}" name="${key}" id="${id}" value="${escapeHtml(option)}" ${checked ? "checked" : ""}>
+          <label class="choice-label ${accentClass}" for="${id}">${escapeHtml(valueLabel(option))}</label>`;
       }).join("");
     });
   }
