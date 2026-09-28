@@ -34,6 +34,7 @@
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
       <a href="#home" data-view-link="home">Home</a>
       <a href="#hidden-abha" data-view-link="hidden-abha">Hidden Abha</a>
+      <a href="#moods" data-view-link="moods">Abha by Mood</a>
       <a href="#explore" data-view-link="explore">Explore</a>
       <a href="#planner" data-view-link="planner">Plan my trip</a>
       <a href="#saved" data-view-link="saved">Saved trip</a>
@@ -103,6 +104,17 @@
     <section class="view" id="hidden-abha" aria-labelledby="hidden-abha-title" hidden>
       <div id="hidden-abha-content"></div>
       <p class="sr-only" id="hidden-abha-status" aria-live="polite" aria-atomic="true"></p>
+    </section>
+
+    <section class="view" id="moods" aria-labelledby="moods-title" hidden>
+      <div class="page-intro mood-intro">
+        <p class="eyebrow" id="moods-eyebrow">ABHA BY MOOD</p>
+        <h1 id="moods-title">Choose the feeling for your day.</h1>
+        <p id="moods-text">Pick a mood and discover existing places in the guide that fit it.</p>
+      </div>
+      <div id="moods-content"></div>
+      <p class="result-count" id="moods-count" aria-live="polite"></p>
+      <div class="place-grid" id="moods-grid"></div>
     </section>
 
     <section class="view" id="explore" aria-labelledby="explore-title" hidden>

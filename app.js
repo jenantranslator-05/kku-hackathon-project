@@ -7,7 +7,7 @@
   const themeStorageKey = "abhaVisitorGuideTheme";
   const labels = {
     en: {
-      home: "Home", hiddenAbha: "Hidden Abha", explore: "Explore", planner: "Plan my trip", saved: "Saved trip",
+      home: "Home", hiddenAbha: "Hidden Abha", moods: "Abha by Mood", explore: "Explore", planner: "Plan my trip", saved: "Saved trip",
       language: "العربية", openNav: "Open navigation", closeNav: "Close navigation",
       themeLight: "Light", themeDark: "Dark", switchToLight: "Switch to light mode", switchToDark: "Switch to dark mode",
       plan: "Plan My Trip", exploreHero: "Explore Places", exploreAll: "Explore all places", viewAll: "View all destinations",
@@ -42,10 +42,13 @@
       dontMind: "I don’t mind", moderate: "Moderate", minimal: "Minimal walking",
       footerTitle: "Abha Visitor Guide", footerText: "Local guide data • Browser-only trip saving",
       heroTitle: "Find your Abha moment.", heroText: "Choose what calls you—mountain views, heritage, cafés, food, or a family day out—and create a plan from the places in this guide.", heroBadge: "16 places to discover",
-      hiddenEyebrow: "HIDDEN ABHA", hiddenTitle: "One day, lived like a local.", hiddenStart: "Start the Experience", hiddenDay: "Your Hidden Abha day", hiddenStatus: "Your Hidden Abha itinerary for Day {day} is ready.", hiddenMap: "Open in Google Maps"
+      hiddenEyebrow: "HIDDEN ABHA", hiddenTitle: "One day, lived like a local.", hiddenStart: "Start the Experience", hiddenDay: "Your Hidden Abha day", hiddenStatus: "Your Hidden Abha itinerary for Day {day} is ready.", hiddenMap: "Open in Google Maps",
+      moodsEyebrow: "ABHA BY MOOD", moodsTitle: "Choose the feeling for your day.", moodsText: "Pick a mood and discover existing places in the guide that fit it.",
+      moodPrompt: "Which Abha mood fits today?", moodCoffeeCalm: "Coffee & Calm", moodNatureViews: "Nature & Views", moodCultureHeritage: "Culture & Heritage", moodFoodDiscovery: "Food Discovery",
+      moodSelected: "Abha for your {mood} mood", moodShowing: "Showing {count} places for {mood}", moodAllShowing: "Showing all {count} places", chooseAnotherMood: "Choose another mood", showAllMoods: "Show all moods", noMoodPlaces: "No guide places match this mood yet."
     },
     ar: {
-      home: "الرئيسية", hiddenAbha: "أبها الخفية", explore: "استكشف", planner: "خطط رحلتك", saved: "الرحلة المحفوظة",
+      home: "الرئيسية", hiddenAbha: "أبها الخفية", moods: "أبها حسب المزاج", explore: "استكشف", planner: "خطط رحلتك", saved: "الرحلة المحفوظة",
       language: "English", openNav: "فتح القائمة", closeNav: "إغلاق القائمة",
       themeLight: "فاتح", themeDark: "داكن", switchToLight: "التبديل إلى الوضع الفاتح", switchToDark: "التبديل إلى الوضع الداكن",
       plan: "خطط رحلتك", exploreHero: "استكشف الوجهات", exploreAll: "استكشف كل الأماكن", viewAll: "عرض كل الوجهات",
@@ -80,7 +83,10 @@
       dontMind: "لا أمانع", moderate: "متوسط", minimal: "مشي قليل",
       footerTitle: "دليل زائر أبها", footerText: "بيانات دليل محلية • حفظ الرحلة في المتصفح فقط",
       heroTitle: "اعثر على لحظتك في أبها.", heroText: "اختر ما يجذبك—إطلالات جبلية أو تراث أو مقاهٍ أو طعام أو يوم عائلي—وأنشئ خطة من الأماكن في هذا الدليل.", heroBadge: "16 مكانًا لاكتشافها",
-      hiddenEyebrow: "أبها الخفية", hiddenTitle: "يوم واحد، بعيون أهل أبها.", hiddenStart: "ابدأ التجربة", hiddenDay: "يومك في أبها الخفية", hiddenStatus: "برنامج أبها الخفية لليوم {day} جاهز.", hiddenMap: "فتح في خرائط Google"
+      hiddenEyebrow: "أبها الخفية", hiddenTitle: "يوم واحد، بعيون أهل أبها.", hiddenStart: "ابدأ التجربة", hiddenDay: "يومك في أبها الخفية", hiddenStatus: "برنامج أبها الخفية لليوم {day} جاهز.", hiddenMap: "فتح في خرائط Google",
+      moodsEyebrow: "أبها حسب المزاج", moodsTitle: "اختر الإحساس المناسب ليومك.", moodsText: "اختر مزاجًا واكتشف أماكن موجودة في الدليل تناسبه.",
+      moodPrompt: "أي مزاج في أبها يناسبك اليوم؟", moodCoffeeCalm: "قهوة وهدوء", moodNatureViews: "طبيعة وإطلالات", moodCultureHeritage: "ثقافة وتراث", moodFoodDiscovery: "اكتشاف الطعام",
+      moodSelected: "أبها لمزاج {mood}", moodShowing: "عرض {count} أماكن لمزاج {mood}", moodAllShowing: "عرض كل الأماكن: {count}", chooseAnotherMood: "اختر مزاجًا آخر", showAllMoods: "عرض كل الخيارات", noMoodPlaces: "لا توجد أماكن في الدليل تطابق هذا المزاج حاليًا."
     }
   };
 
@@ -110,8 +116,17 @@
     featuredPlaceId: null,
     preferences: normalizePreferences(window.ABHA_EXAMPLE_PREFERENCES),
     plan: null,
-    hiddenAbhaDay: null
+    hiddenAbhaDay: null,
+    mood: null,
+    showAllMoods: false
   };
+
+  const moodOptions = [
+    { id: "coffee-calm", labelKey: "moodCoffeeCalm" },
+    { id: "nature-views", labelKey: "moodNatureViews" },
+    { id: "culture-heritage", labelKey: "moodCultureHeritage" },
+    { id: "food-discovery", labelKey: "moodFoodDiscovery" }
+  ];
 
   const el = (selector) => document.querySelector(selector);
   const all = (selector) => [...document.querySelectorAll(selector)];
@@ -270,6 +285,75 @@
 
   function chooseRandomHiddenAbhaDay(days = hiddenAbhaDays, random = Math.random) {
     return days.length ? days[Math.floor(random() * days.length)] : null;
+  }
+
+  function moodLabel(mood, language = state.language) {
+    const definition = moodOptions.find((item) => item.id === mood);
+    return definition ? (labels[language][definition.labelKey] || "") : "";
+  }
+
+  function matchesMood(place, mood) {
+    const category = place.category || "";
+    const source = `${category} ${place.descriptionEn || ""}`;
+    const isCafe = /\b(caf[eé]s?|coffee)\b/i.test(category);
+    const isRestaurant = /\brestaurants?\b/i.test(category);
+
+    if (mood === "coffee-calm") {
+      const isCalmOrScenic = /\b(calm|quiet|peaceful|relaxing|park|nature|scenic|views?)\b/i.test(source);
+      return isCafe || (!isRestaurant && isCalmOrScenic);
+    }
+    if (mood === "nature-views") return /\b(nature|mountain|clouds?|park|walkway|viewpoint|views?)\b/i.test(source);
+    if (mood === "culture-heritage") return /\b(heritage|culture|history|art|village|palaces?)\b/i.test(source);
+    if (mood === "food-discovery") return /\b(restaurants?|food|bakery|pizza|italian)\b/i.test(category);
+    return false;
+  }
+
+  function renderMoodPage() {
+    const content = el("#moods-content");
+    const count = el("#moods-count");
+    const grid = el("#moods-grid");
+    if (!content || !count || !grid) return;
+
+    const moodChoices = moodOptions.map((mood) => {
+      const alternateLanguage = isArabic() ? "en" : "ar";
+      const active = state.mood === mood.id;
+      return `<button class="mood-button ${active ? "active" : ""}" type="button" data-mood="${mood.id}" aria-pressed="${active}">
+        <span>${escapeHtml(moodLabel(mood.id))}</span>
+        <small lang="${alternateLanguage}" dir="${isArabic() ? "ltr" : "rtl"}">${escapeHtml(moodLabel(mood.id, alternateLanguage))}</small>
+      </button>`;
+    }).join("");
+
+    if (!state.mood && !state.showAllMoods) {
+      content.innerHTML = `<section class="mood-picker reveal-section is-visible" aria-labelledby="mood-picker-title">
+        <h2 id="mood-picker-title">${escapeHtml(text("moodPrompt"))}</h2>
+        <div class="mood-grid">${moodChoices}</div>
+        <button class="mood-show-all" type="button" data-show-all-moods>${escapeHtml(text("showAllMoods"))}</button>
+      </section>`;
+      count.textContent = "";
+      grid.innerHTML = "";
+      return;
+    }
+
+    const matching = state.showAllMoods ? places : places.filter((place) => matchesMood(place, state.mood));
+    const selectedLabel = moodLabel(state.mood);
+    content.innerHTML = `<div class="mood-results-header reveal-section is-visible">
+      <div>
+        <p class="eyebrow">${escapeHtml(text("moodsEyebrow"))}</p>
+        <h2 id="moods-results-title" tabindex="-1">${escapeHtml(state.showAllMoods ? text("showAllMoods") : text("moodSelected").replace("{mood}", selectedLabel))}</h2>
+      </div>
+      <div class="mood-actions">
+        <button class="button button-secondary" type="button" data-choose-another-mood>${escapeHtml(text("chooseAnotherMood"))}</button>
+        ${state.showAllMoods ? "" : `<button class="mood-show-all" type="button" data-show-all-moods>${escapeHtml(text("showAllMoods"))}</button>`}
+      </div>
+    </div>`;
+    count.textContent = state.showAllMoods
+      ? text("moodAllShowing").replace("{count}", matching.length)
+      : text("moodShowing").replace("{count}", matching.length).replace("{mood}", selectedLabel);
+    const alternateLanguage = isArabic() ? "en" : "ar";
+    grid.innerHTML = matching.length
+      ? matching.map(placeCard).join("")
+      : `<div class="empty-state mood-empty-state"><p>${escapeHtml(text("noMoodPlaces"))}<span lang="${alternateLanguage}" dir="${isArabic() ? "ltr" : "rtl"}">${escapeHtml(labels[alternateLanguage].noMoodPlaces)}</span></p></div>`;
+    observeReveals();
   }
 
   function renderHiddenAbhaStop(stop, index) {
@@ -557,6 +641,9 @@
     el("#callout-eyebrow").textContent = text("callout");
     el("#callout-title").textContent = text("calloutTitle");
     el("#callout-button").innerHTML = `${escapeHtml(text("build"))} <span aria-hidden="true">→</span>`;
+    el("#moods-eyebrow").textContent = text("moodsEyebrow");
+    el("#moods-title").textContent = text("moodsTitle");
+    el("#moods-text").textContent = text("moodsText");
     el("#explore .eyebrow").textContent = text("exploreEyebrow");
     el("#explore-title").textContent = text("exploreTitle");
     el("#explore-title").nextElementSibling.textContent = text("exploreText");
@@ -578,6 +665,7 @@
     renderHomeInterests();
     renderHomeGallery();
     renderHiddenAbha();
+    renderMoodPage();
     renderExplore();
     renderChoices();
     if (state.plan) renderPlan();
@@ -610,7 +698,7 @@
   function bindEvents() {
     window.addEventListener("hashchange", () => {
       const view = window.location.hash.slice(1) || "home";
-      if (["home", "hidden-abha", "explore", "planner", "results", "saved"].includes(view)) changeView(view);
+      if (["home", "hidden-abha", "moods", "explore", "planner", "results", "saved"].includes(view)) changeView(view);
     });
     document.addEventListener("click", (event) => {
       const link = event.target.closest("[data-go-to], [data-view-link]");
@@ -633,6 +721,27 @@
         state.featuredPlaceId = destination.dataset.exploreDestination; state.filter = "All"; state.visitMonth = null;
         history.replaceState(null, "", "#explore"); renderExplore(); changeView("explore");
         requestAnimationFrame(() => el(`[data-place-card="${state.featuredPlaceId}"]`)?.focus());
+      }
+      const mood = event.target.closest("[data-mood]");
+      if (mood) {
+        state.mood = mood.dataset.mood;
+        state.showAllMoods = false;
+        renderMoodPage();
+        requestAnimationFrame(() => el("#moods-results-title")?.focus());
+      }
+      const chooseAnotherMood = event.target.closest("[data-choose-another-mood]");
+      if (chooseAnotherMood) {
+        state.mood = null;
+        state.showAllMoods = false;
+        renderMoodPage();
+        requestAnimationFrame(() => el("[data-mood]")?.focus());
+      }
+      const showAllMoods = event.target.closest("[data-show-all-moods]");
+      if (showAllMoods) {
+        state.mood = null;
+        state.showAllMoods = true;
+        renderMoodPage();
+        requestAnimationFrame(() => el("#moods-results-title")?.focus());
       }
       const startHiddenAbha = event.target.closest("[data-start-hidden-abha]");
       if (startHiddenAbha) {
@@ -684,9 +793,9 @@
 
   function init() {
     applyTheme(state.theme);
-    renderHomeInterests(); renderHomeGallery(); renderHiddenAbha(); renderExplore(); renderChoices(); renderSaved(); bindEvents(); observeReveals();
+    renderHomeInterests(); renderHomeGallery(); renderHiddenAbha(); renderMoodPage(); renderExplore(); renderChoices(); renderSaved(); bindEvents(); observeReveals();
     const initialView = window.location.hash.slice(1);
-    if (["home", "hidden-abha", "explore", "planner", "results", "saved"].includes(initialView)) changeView(initialView);
+    if (["home", "hidden-abha", "moods", "explore", "planner", "results", "saved"].includes(initialView)) changeView(initialView);
   }
 
   init();
