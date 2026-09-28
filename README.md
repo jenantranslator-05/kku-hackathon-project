@@ -19,8 +19,9 @@ Visitors to Abha who want a simple mobile-friendly guide for nature, cafés, foo
 1. Open `index.html` in a web browser by double-clicking it.
 2. Use the Arabic / English button in the top bar to change language and page direction.
 3. Use the **Light / Dark** control in the top bar to choose a visual mode. Light mode is the default and the choice stays in that browser.
-4. Use **Plan My Trip / خطط رحلتك** to answer five questions and create an itinerary.
-5. Select **Save My Trip / احفظ رحلتي** to save it only in that browser.
+4. Use **Explore / استكشف** to combine an interest filter with a **Best month / أفضل شهر** picker; **All months / كل الأشهر** resets only the month choice.
+5. Use **Plan My Trip / خطط رحلتك** to answer five questions and create a Morning, Lunch, and Evening itinerary.
+6. Select **Save My Trip / احفظ رحلتي** to save it only in that browser.
 
 ## Try it with the sample data
 
@@ -35,6 +36,8 @@ To see a ready-made example:
 ## Data notes
 
 - The guide displays only destinations, descriptions, map links, categories, costs, suitability, walking levels, indoor/outdoor labels, durations, best times, and weather alternatives from the supplied Excel file.
+- Each Explore card also has curated Gregorian `visitMonths` guidance for the Best month picker. Food and café-led venues are available all year, while all other Explore destinations are recommended from April through November. This editorial seasonal guidance is separate from the supplied spreadsheet fields, just as the approved Photography and Adventures tags are.
+- Lunch recommendations are selected from restaurant and food venue categories because the supplied data does not provide a Lunch best-time field.
 - Curo appears in Explore with its supplied map link and can be included in automatic trips when it matches the selected source-based preferences.
 - All 16 supplied destinations use matching bundled local images from `assets/images/`; no external images are used. The Home page presents an editorial gallery, and **Explore** always provides access to every destination.
 - The visual light/dark preference is stored only with browser `localStorage`; light is the default. The Jacaranda, cloud, and mountain details are CSS-only.

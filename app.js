@@ -2,11 +2,12 @@
   "use strict";
 
   const places = window.ABHA_PLACES;
+  const hiddenAbhaDays = Array.isArray(window.ABHA_HIDDEN_ABHA_DAYS) ? window.ABHA_HIDDEN_ABHA_DAYS : [];
   const storageKey = "abhaVisitorGuideSavedTrip";
   const themeStorageKey = "abhaVisitorGuideTheme";
   const labels = {
     en: {
-      home: "Home", explore: "Explore", planner: "Plan my trip", saved: "Saved trip",
+      home: "Home", hiddenAbha: "Hidden Abha", explore: "Explore", planner: "Plan my trip", saved: "Saved trip",
       language: "العربية", openNav: "Open navigation", closeNav: "Close navigation",
       themeLight: "Light", themeDark: "Dark", switchToLight: "Switch to light mode", switchToDark: "Switch to dark mode",
       plan: "Plan My Trip", exploreHero: "Explore Places", exploreAll: "Explore all places", viewAll: "View all destinations",
@@ -16,7 +17,9 @@
       callout: "YOUR DAY, YOUR WAY", calloutTitle: "Five quick choices. A plan made for you.", build: "Build my plan",
       exploreEyebrow: "EXPLORE ABHA", exploreTitle: "Places for every kind of day.",
       exploreText: "Filter places using the guide’s categories and approved interest tags.",
-      showing: "Showing {count} places", showingDestination: "Showing {place}", noPlaces: "No places match this filter.",
+      showing: "Showing {count} places", showingDestination: "Showing {place}", noPlaces: "No places match these filters.",
+      allMonths: "All months", monthFilter: "Best month", bestMonths: "Best months", enjoyableYearRound: "ENJOYABLE YEAR-ROUND", aprilToNovember: "APRIL – NOVEMBER",
+      january: "January", february: "February", march: "March", april: "April", may: "May", june: "June", july: "July", august: "August", september: "September", october: "October", november: "November", december: "December",
       plannerEyebrow: "TRIP PLANNER", plannerTitle: "Build a day that feels like you.",
       plannerText: "Answer five quick questions. Recommendations use only the places and details in this guide.",
       qTraveler: "Who are you traveling with?", qInterest: "What do you love? Select all that apply.", qTime: "How much time do you have?",
@@ -30,6 +33,7 @@
       selected: "Selected interests", estimate: "Estimated minimum", totalTime: "Planned time", day: "Day", hours: "hours",
       weather: "Weather alternative: {place}", aboveBudget: "This is the closest matching plan, but its estimated minimum cost is above your selected budget.",
       solo: "Solo suitability is not specifically listed in the source data.", noMatch: "No exact match was found for every choice. This plan uses the closest places from the guide.",
+      morning: "Morning", lunch: "Lunch", evening: "Evening", lunchNote: "Lunch is recommended from the venue category; the source data does not label a lunch best time.", timeAdvisory: "This three-stop day is longer than your selected time. Keep the stops as a flexible guide.",
       all: "All", nature: "Nature", cafes: "Cafés", food: "Food", heritage: "Heritage", photography: "Photography", family: "Family", adventures: "Adventures",
       traveler: "Travelers", interest: "Interest", time: "Time", budget: "Budget", walkingLabel: "Walking",
       family: "Family", friends: "Friends", couple: "Couple", soloOption: "Solo",
@@ -37,10 +41,11 @@
       under100: "Under 100 SAR", b100to300: "100–300 SAR", b300to500: "300–500 SAR", b500plus: "500+ SAR",
       dontMind: "I don’t mind", moderate: "Moderate", minimal: "Minimal walking",
       footerTitle: "Abha Visitor Guide", footerText: "Local guide data • Browser-only trip saving",
-      heroTitle: "Find your Abha moment.", heroText: "Choose what calls you—mountain views, heritage, cafés, food, or a family day out—and create a plan from the places in this guide.", heroBadge: "16 places to discover"
+      heroTitle: "Find your Abha moment.", heroText: "Choose what calls you—mountain views, heritage, cafés, food, or a family day out—and create a plan from the places in this guide.", heroBadge: "16 places to discover",
+      hiddenEyebrow: "HIDDEN ABHA", hiddenTitle: "One day, lived like a local.", hiddenStart: "Start the Experience", hiddenDay: "Your Hidden Abha day", hiddenStatus: "Your Hidden Abha itinerary for Day {day} is ready.", hiddenMap: "Open in Google Maps"
     },
     ar: {
-      home: "الرئيسية", explore: "استكشف", planner: "خطط رحلتك", saved: "الرحلة المحفوظة",
+      home: "الرئيسية", hiddenAbha: "أبها الخفية", explore: "استكشف", planner: "خطط رحلتك", saved: "الرحلة المحفوظة",
       language: "English", openNav: "فتح القائمة", closeNav: "إغلاق القائمة",
       themeLight: "فاتح", themeDark: "داكن", switchToLight: "التبديل إلى الوضع الفاتح", switchToDark: "التبديل إلى الوضع الداكن",
       plan: "خطط رحلتك", exploreHero: "استكشف الوجهات", exploreAll: "استكشف كل الأماكن", viewAll: "عرض كل الوجهات",
@@ -50,7 +55,9 @@
       callout: "يومك بطريقتك", calloutTitle: "خمسة اختيارات سريعة. وخطة تناسبك.", build: "أنشئ خطتي",
       exploreEyebrow: "استكشف أبها", exploreTitle: "أماكن لكل نوع من الأيام.",
       exploreText: "صفِّ الأماكن باستخدام فئات الدليل ووسوم الاهتمامات المعتمدة.",
-      showing: "عرض {count} أماكن", showingDestination: "عرض {place}", noPlaces: "لا توجد أماكن تطابق هذا الفلتر.",
+      showing: "عرض {count} أماكن", showingDestination: "عرض {place}", noPlaces: "لا توجد أماكن تطابق هذه الفلاتر.",
+      allMonths: "كل الأشهر", monthFilter: "أفضل شهر", bestMonths: "أفضل الأشهر", enjoyableYearRound: "ممتعة طوال العام", aprilToNovember: "أبريل – نوفمبر",
+      january: "يناير", february: "فبراير", march: "مارس", april: "أبريل", may: "مايو", june: "يونيو", july: "يوليو", august: "أغسطس", september: "سبتمبر", october: "أكتوبر", november: "نوفمبر", december: "ديسمبر",
       plannerEyebrow: "مخطط الرحلة", plannerTitle: "اصنع يوماً يشبهك.",
       plannerText: "أجب عن خمسة أسئلة سريعة. تستخدم الاقتراحات الأماكن والتفاصيل الموجودة في هذا الدليل فقط.",
       qTraveler: "مع من تسافر؟", qInterest: "ما الذي تحبه؟ اختر كل ما ينطبق.", qTime: "كم من الوقت لديك؟",
@@ -64,6 +71,7 @@
       selected: "الاهتمامات المختارة", estimate: "الحد الأدنى التقديري", totalTime: "الوقت المخطط", day: "اليوم", hours: "ساعات",
       weather: "بديل الطقس: {place}", aboveBudget: "هذه أقرب خطة مطابقة، لكن الحد الأدنى التقديري لتكلفتها أعلى من ميزانيتك المحددة.",
       solo: "لا تُذكر ملاءمة المسافر المنفرد تحديدًا في بيانات المصدر.", noMatch: "لم يُعثر على تطابق دقيق لكل الاختيارات. تستخدم هذه الخطة أقرب الأماكن من الدليل.",
+      morning: "الصباح", lunch: "الغداء", evening: "المساء", lunchNote: "توصية الغداء مبنية على فئة المكان؛ لا تصف بيانات المصدر الغداء كأفضل وقت.", timeAdvisory: "يتجاوز هذا اليوم ذو المحطات الثلاث وقتك المختار. اعتبر المحطات دليلاً مرنًا.",
       all: "الكل", nature: "طبيعة", cafes: "مقاهي", food: "طعام", heritage: "تراث", photography: "تصوير", family: "عائلات", adventures: "مغامرات",
       traveler: "المسافرون", interest: "الاهتمام", time: "الوقت", budget: "الميزانية", walkingLabel: "المشي",
       family: "عائلة", friends: "أصدقاء", couple: "زوجان", soloOption: "منفرد",
@@ -71,7 +79,8 @@
       under100: "أقل من 100 ريال", b100to300: "100–300 ريال", b300to500: "300–500 ريال", b500plus: "500+ ريال",
       dontMind: "لا أمانع", moderate: "متوسط", minimal: "مشي قليل",
       footerTitle: "دليل زائر أبها", footerText: "بيانات دليل محلية • حفظ الرحلة في المتصفح فقط",
-      heroTitle: "اعثر على لحظتك في أبها.", heroText: "اختر ما يجذبك—إطلالات جبلية أو تراث أو مقاهٍ أو طعام أو يوم عائلي—وأنشئ خطة من الأماكن في هذا الدليل.", heroBadge: "16 مكانًا لاكتشافها"
+      heroTitle: "اعثر على لحظتك في أبها.", heroText: "اختر ما يجذبك—إطلالات جبلية أو تراث أو مقاهٍ أو طعام أو يوم عائلي—وأنشئ خطة من الأماكن في هذا الدليل.", heroBadge: "16 مكانًا لاكتشافها",
+      hiddenEyebrow: "أبها الخفية", hiddenTitle: "يوم واحد، بعيون أهل أبها.", hiddenStart: "ابدأ التجربة", hiddenDay: "يومك في أبها الخفية", hiddenStatus: "برنامج أبها الخفية لليوم {day} جاهز.", hiddenMap: "فتح في خرائط Google"
     }
   };
 
@@ -97,9 +106,11 @@
     language: "en",
     theme: loadTheme(),
     filter: "All",
+    visitMonth: null,
     featuredPlaceId: null,
     preferences: normalizePreferences(window.ABHA_EXAMPLE_PREFERENCES),
-    plan: null
+    plan: null,
+    hiddenAbhaDay: null
   };
 
   const el = (selector) => document.querySelector(selector);
@@ -190,6 +201,23 @@
     observeReveals();
   }
 
+  const monthLabelKeys = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+
+  function monthLabel(month) {
+    return text(monthLabelKeys[Number(month) - 1] || "");
+  }
+
+  function visitMonthLabels(months) {
+    const validMonths = [...new Set((Array.isArray(months) ? months : []).filter((month) => Number.isInteger(month) && month >= 1 && month <= 12))].sort((a, b) => a - b);
+    if (validMonths.join(",") === "1,2,3,4,5,6,7,8,9,10,11,12") return text("enjoyableYearRound");
+    if (validMonths.join(",") === "4,5,6,7,8,9,10,11") return text("aprilToNovember");
+    return new Intl.ListFormat(isArabic() ? "ar-SA" : "en", { style: "long", type: "conjunction" }).format(validMonths.map(monthLabel));
+  }
+
+  function monthMatches(place, month) {
+    return !Number.isInteger(month) || (Array.isArray(place.visitMonths) && place.visitMonths.includes(month));
+  }
+
   function filterMatches(place, filter) {
     if (filter === "All") return true;
     if (filter === "Photography" || filter === "Adventures") return place.approvedTags.includes(filter);
@@ -205,8 +233,8 @@
     const image = place.image
       ? `<img src="${place.image}" alt="${escapeHtml(nameFor(place))}" loading="lazy">`
       : `<div class="placeholder-art" role="img" aria-label="${escapeHtml(text("imageUnavailable"))}"><strong>${escapeHtml(text("imageUnavailable"))}</strong></div>`;
-    const map = place.mapUrl
-      ? `<a class="map-link" href="${place.mapUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(text("map"))} <span aria-hidden="true">↗</span></a>`
+    const map = isGoogleMapsUrl(place.mapUrl)
+      ? `<a class="map-link" href="${escapeHtml(place.mapUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text("map"))} <span aria-hidden="true">↗</span></a>`
       : `<p class="map-unavailable">${escapeHtml(text("mapUnavailable"))}</p>`;
     return `<article class="place-card reveal-item ${destinationAccent(place)}" data-place-card="${place.id}" tabindex="-1">
       <div class="place-media">${image}</div>
@@ -219,17 +247,93 @@
           <li><strong>${escapeHtml(text("walking"))}</strong>${escapeHtml(place.walking)}</li>
           <li><strong>${escapeHtml(text("setting"))}</strong>${escapeHtml(place.environment)}</li>
           <li><strong>${escapeHtml(text("duration"))}</strong>${escapeHtml(place.duration)}</li>
+          <li class="best-months"><strong>${escapeHtml(text("bestMonths"))}</strong>${escapeHtml(visitMonthLabels(place.visitMonths))}</li>
         </ul>
         ${map}
       </div>
     </article>`;
   }
 
+  function hiddenNameFor(stop) { return isArabic() ? stop.nameAr : stop.nameEn; }
+  function hiddenDescriptionFor(stop) { return isArabic() ? stop.descriptionAr : stop.descriptionEn; }
+  function hiddenCategoryFor(stop) { return isArabic() ? stop.categoryAr : stop.category; }
+
+  function isGoogleMapsUrl(value) {
+    if (!value) return false;
+    try {
+      const url = new URL(value);
+      return url.protocol === "https:" && ["www.google.com", "maps.google.com", "maps.app.goo.gl"].includes(url.hostname);
+    } catch {
+      return false;
+    }
+  }
+
+  function chooseRandomHiddenAbhaDay(days = hiddenAbhaDays, random = Math.random) {
+    return days.length ? days[Math.floor(random() * days.length)] : null;
+  }
+
+  function renderHiddenAbhaStop(stop, index) {
+    const name = hiddenNameFor(stop);
+    const alternateName = isArabic() ? stop.nameEn : stop.nameAr;
+    const alternateLang = isArabic() ? "en" : "ar";
+    const alternateDir = isArabic() ? "ltr" : "rtl";
+    const map = isGoogleMapsUrl(stop.mapUrl)
+      ? `<a class="map-link hidden-map-link" href="${escapeHtml(stop.mapUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(`${text("hiddenMap")}: ${name}`)}">${escapeHtml(text("hiddenMap"))} <span aria-hidden="true">↗</span></a>`
+      : "";
+    return `<li class="hidden-stop reveal-item">
+      <div class="hidden-stop-image"><img src="${escapeHtml(stop.image)}" alt="${escapeHtml(name)}" loading="lazy"></div>
+      <div class="hidden-stop-content">
+        <div class="hidden-stop-meta"><time datetime="${escapeHtml(stop.time)}" dir="ltr">${escapeHtml(stop.time)}</time><span>${escapeHtml(hiddenCategoryFor(stop))}</span></div>
+        <p class="hidden-stop-number" aria-hidden="true">${String(index + 1).padStart(2, "0")}</p>
+        <h2>${escapeHtml(name)}<span lang="${alternateLang}" dir="${alternateDir}">${escapeHtml(alternateName)}</span></h2>
+        <p>${escapeHtml(hiddenDescriptionFor(stop))}</p>
+        ${map}
+      </div>
+    </li>`;
+  }
+
+  function renderHiddenAbha() {
+    const container = el("#hidden-abha-content");
+    const status = el("#hidden-abha-status");
+    if (!container || !status) return;
+    const day = state.hiddenAbhaDay;
+    if (!day) {
+      status.textContent = "";
+      container.innerHTML = `<div class="hidden-welcome reveal-section is-visible">
+        <div class="hidden-welcome-art" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="hidden-welcome-copy">
+          <p class="eyebrow">${escapeHtml(text("hiddenEyebrow"))}</p>
+          <h1 id="hidden-abha-title">${escapeHtml(text("hiddenTitle"))}</h1>
+          <p class="hidden-welcome-ar" lang="ar" dir="rtl">هل أنت مستعد لخوض تجربة العيش مثل أهل أبها؟</p>
+          <p class="hidden-welcome-en">ARE YOU READY TO EXPERIENCE LIFE LIKE A LOCAL IN ABHA?</p>
+          <button class="button button-primary" type="button" data-start-hidden-abha>${escapeHtml(text("hiddenStart"))} <span aria-hidden="true">→</span></button>
+        </div>
+      </div>`;
+      return;
+    }
+    const sortedStops = [...day.stops].sort((a, b) => a.time.localeCompare(b.time));
+    status.textContent = text("hiddenStatus").replace("{day}", day.number);
+    container.innerHTML = `<div class="hidden-itinerary-heading">
+        <p class="eyebrow">${escapeHtml(text("hiddenEyebrow"))} · ${escapeHtml(text("day"))} ${day.number}</p>
+        <h1 id="hidden-abha-title" tabindex="-1">${escapeHtml(text("hiddenDay"))}</h1>
+        <p>${escapeHtml(isArabic() ? "خمس محطات مرتبة لتعيش أبها بطريقتها المحلية." : "Five timed stops for a day experienced the local way.")}</p>
+      </div>
+      <ol class="hidden-stops">${sortedStops.map(renderHiddenAbhaStop).join("")}</ol>`;
+    observeReveals();
+  }
+
   function renderExplore() {
     const filters = ["All", ...interests];
-    el("#filter-bar").innerHTML = filters.map((filter) => `<button class="filter-button ${state.filter === filter && !state.featuredPlaceId ? "active" : ""}" type="button" data-filter="${filter}" aria-pressed="${state.filter === filter && !state.featuredPlaceId}">${escapeHtml(filter === "All" ? text("all") : valueLabel(filter))}</button>`).join("");
     const featured = state.featuredPlaceId ? places.find((place) => place.id === state.featuredPlaceId) : null;
-    const matching = featured ? [featured] : places.filter((place) => filterMatches(place, state.filter));
+    el("#filter-bar").innerHTML = filters.map((filter) => `<button class="filter-button ${state.filter === filter && !featured ? "active" : ""}" type="button" data-filter="${filter}" aria-pressed="${state.filter === filter && !featured}">${escapeHtml(filter === "All" ? text("all") : valueLabel(filter))}</button>`).join("");
+    const monthSelect = el("#month-filter");
+    const monthLabelElement = el("#month-filter-label");
+    if (monthLabelElement) monthLabelElement.textContent = text("monthFilter");
+    if (monthSelect) {
+      monthSelect.innerHTML = `<option value="">${escapeHtml(text("allMonths"))}</option>${monthLabelKeys.map((key, index) => `<option value="${index + 1}" ${state.visitMonth === index + 1 ? "selected" : ""}>${escapeHtml(text(key))}</option>`).join("")}`;
+      monthSelect.disabled = Boolean(featured);
+    }
+    const matching = featured ? [featured] : places.filter((place) => filterMatches(place, state.filter) && monthMatches(place, state.visitMonth));
     el("#place-count").textContent = featured ? text("showingDestination").replace("{place}", nameFor(featured)) : text("showing").replace("{count}", matching.length);
     el("#places-grid").innerHTML = matching.length ? matching.map(placeCard).join("") : `<div class="empty-state">${escapeHtml(text("noPlaces"))}</div>`;
     observeReveals();
@@ -293,54 +397,77 @@
     return score;
   }
 
+  function rankedPlanCandidates(preferences, allowOverBudget = true) {
+    return places
+      .filter((place) => isGoogleMapsUrl(place.mapUrl))
+      .map((place) => ({ place, score: scorePlace(place, preferences, allowOverBudget) }))
+      .sort((a, b) => b.score - a.score || a.place.nameEn.localeCompare(b.place.nameEn));
+  }
+
+  function lunchMatches(place) {
+    return /Food|Restaurant|Pizza|Italian|Neapolitan/i.test(place.category);
+  }
+
+  function chooseScheduledPlace(candidates, usedIds, predicate) {
+    const preferred = candidates.find(({ place }) => !usedIds.has(place.id) && predicate(place));
+    const fallback = candidates.find(({ place }) => !usedIds.has(place.id));
+    return (preferred || fallback || null)?.place || null;
+  }
+
+  function buildSchedule(preferences, dayCount) {
+    const candidates = rankedPlanCandidates(preferences);
+    return Array.from({ length: dayCount }, () => {
+      const usedIds = new Set();
+      const morning = chooseScheduledPlace(candidates, usedIds, (place) => place.bestTime === "MORNING");
+      if (morning) usedIds.add(morning.id);
+      const lunch = chooseScheduledPlace(candidates, usedIds, lunchMatches);
+      if (lunch) usedIds.add(lunch.id);
+      const evening = chooseScheduledPlace(candidates, usedIds, (place) => place.bestTime === "EVENING");
+      if (evening) usedIds.add(evening.id);
+      return [
+        { period: "morning", place: morning },
+        { period: "lunch", place: lunch },
+        { period: "evening", place: evening }
+      ];
+    });
+  }
+
   function buildPlan(rawPreferences) {
     const preferences = normalizePreferences(rawPreferences);
     const target = targetHours(preferences.time);
     const [, maxBudget] = budgetRange(preferences.budget);
-    const candidates = places.filter((place) => place.mapUrl).map((place) => ({ place, score: scorePlace(place, preferences, false) })).sort((a, b) => b.score - a.score);
-    const choose = (list, canExceed) => {
-      const selected = [];
-      let hours = 0;
-      let cost = 0;
-      for (const item of list) {
-        const place = item.place;
-        const placeHours = averageHours(place);
-        const placeCost = minCost(place);
-        const hasInterest = matchingInterests(place, preferences.interest).length > 0;
-        const canFitTime = selected.length === 0 || hours + placeHours <= target;
-        const canFitBudget = cost + placeCost <= maxBudget;
-        if (canFitTime && (canFitBudget || canExceed) && (item.score > -10 || hasInterest)) {
-          selected.push(place); hours += placeHours; cost += placeCost;
-        }
-        if (hours >= target * .78) break;
-      }
-      return { selected, hours, cost };
-    };
-    let chosen = choose(candidates, false);
-    let aboveBudget = chosen.cost > maxBudget;
-    const chosenInterestCount = new Set(chosen.selected.flatMap((place) => matchingInterests(place, preferences.interest))).size;
-    if (!chosen.selected.length || !chosenInterestCount) {
-      const fallbackCandidates = places.filter((place) => place.mapUrl).map((place) => ({ place, score: scorePlace(place, preferences, true) })).sort((a, b) => b.score - a.score);
-      chosen = choose(fallbackCandidates, true);
-      aboveBudget = chosen.cost > maxBudget;
-    }
-    if (!chosen.selected.length) {
-      chosen = { selected: [places.find((place) => place.mapUrl)], hours: 2, cost: 50 };
-      aboveBudget = chosen.cost > maxBudget;
-    }
-    const matched = new Set(chosen.selected.flatMap((place) => matchingInterests(place, preferences.interest)));
-    const exact = matched.size === preferences.interest.length && (preferences.traveler === "Solo" || chosen.selected.some((place) => travelerMatches(place, preferences.traveler))) && chosen.selected.some((place) => walkingMatches(place, preferences.walking));
-    return { preferences, places: chosen.selected, hours: chosen.hours, cost: chosen.cost, target, dayCount: preferences.time === "2 days" ? 2 : 1, aboveBudget, exact };
+    const dayCount = preferences.time === "2 days" ? 2 : 1;
+    const schedule = buildSchedule(preferences, dayCount);
+    const scheduledPlaces = schedule.flat().map((slot) => slot.place).filter(Boolean);
+    const hours = scheduledPlaces.reduce((total, place) => total + averageHours(place), 0);
+    const cost = scheduledPlaces.reduce((total, place) => total + minCost(place), 0);
+    const matched = new Set(scheduledPlaces.flatMap((place) => matchingInterests(place, preferences.interest)));
+    const exact = scheduledPlaces.length === dayCount * 3 && matched.size === preferences.interest.length && (preferences.traveler === "Solo" || scheduledPlaces.some((place) => travelerMatches(place, preferences.traveler))) && scheduledPlaces.some((place) => walkingMatches(place, preferences.walking));
+    return { preferences, schedule, places: scheduledPlaces, hours, cost, target, dayCount, aboveBudget: cost > maxBudget, exact };
+  }
+
+  function renderScheduleStop(slot) {
+    const place = slot.place;
+    if (!place) return `<article class="trip-stop daypart-slot"><h3>${escapeHtml(text(slot.period))}</h3><p>${escapeHtml(text("noMatch"))}</p></article>`;
+    const weather = place.weatherAlternative && place.weatherAlternative !== "No change needed" ? `<div class="weather-alternative">${escapeHtml(text("weather").replace("{place}", place.weatherAlternative))}</div>` : "";
+    const lunchNote = slot.period === "lunch" ? `<p class="slot-note">${escapeHtml(text("lunchNote"))}</p>` : "";
+    const bestTime = slot.period === "lunch" ? text("lunch") : place.bestTime;
+    return `<article class="trip-stop daypart-slot reveal-item"><span class="stop-time">${escapeHtml(text(slot.period))} · ${escapeHtml(bestTime)} · ${escapeHtml(place.duration)}</span><h3>${escapeHtml(nameFor(place))}</h3><p>${escapeHtml(descriptionFor(place))}</p><p><strong>${escapeHtml(text("cost"))}:</strong> ${escapeHtml(place.cost)}</p>${lunchNote}${weather}<a class="map-link" href="${escapeHtml(place.mapUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text("map"))} <span aria-hidden="true">↗</span></a></article>`;
   }
 
   function renderPlan() {
     const plan = state.plan;
     if (!plan) return;
     plan.preferences = normalizePreferences(plan.preferences);
+    if (!Array.isArray(plan.schedule)) {
+      const regenerated = buildPlan(plan.preferences);
+      Object.assign(plan, regenerated);
+    }
     const notices = [];
     if (plan.preferences.traveler === "Solo") notices.push(`<p class="notice">${escapeHtml(text("solo"))}</p>`);
     if (!plan.exact) notices.push(`<p class="notice">${escapeHtml(text("noMatch"))}</p>`);
     if (plan.aboveBudget) notices.push(`<p class="notice warning">${escapeHtml(text("aboveBudget"))}</p>`);
+    if (plan.hours > plan.target) notices.push(`<p class="notice warning">${escapeHtml(text("timeAdvisory"))}</p>`);
     el("#planner-notices").innerHTML = notices.join("");
     el("#results-summary").textContent = text("resultSummary").replace("{time}", valueLabel(plan.preferences.time)).replace("{interest}", interestsLabel(plan.preferences.interest));
     el("#trip-overview").innerHTML = `
@@ -348,19 +475,10 @@
       <div class="overview-item"><span>${escapeHtml(text("estimate"))}</span><strong>${escapeHtml(plan.cost)} SAR</strong></div>
       <div class="overview-item"><span>${escapeHtml(text("totalTime"))}</span><strong>${escapeHtml(plan.hours % 1 ? plan.hours.toFixed(1) : plan.hours)} ${escapeHtml(text("hours"))}</strong></div>
       <div class="overview-item"><span>${escapeHtml(text("budget"))}</span><strong>${escapeHtml(valueLabel(plan.preferences.budget))}</strong></div>`;
-    const perDay = plan.dayCount === 2 ? [[], []] : [[]];
-    const dayHours = new Array(plan.dayCount).fill(0);
-    plan.places.forEach((place) => {
-      const placement = plan.dayCount === 2 && dayHours[0] + averageHours(place) > 8 ? 1 : 0;
-      perDay[placement].push(place); dayHours[placement] += averageHours(place);
-    });
-    el("#itinerary").innerHTML = perDay.map((dayPlaces, index) => {
-      const hourTotal = dayHours[index] % 1 ? dayHours[index].toFixed(1) : dayHours[index];
-      const stops = dayPlaces.map((place) => {
-        const weather = place.weatherAlternative && place.weatherAlternative !== "No change needed" ? `<div class="weather-alternative">${escapeHtml(text("weather").replace("{place}", place.weatherAlternative))}</div>` : "";
-        return `<article class="trip-stop reveal-item"><span class="stop-time">${escapeHtml(place.bestTime)} · ${escapeHtml(place.duration)}</span><h3>${escapeHtml(nameFor(place))}</h3><p>${escapeHtml(descriptionFor(place))}</p><p><strong>${escapeHtml(text("cost"))}:</strong> ${escapeHtml(place.cost)}</p>${weather}<a class="map-link" href="${place.mapUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(text("map"))} <span aria-hidden="true">↗</span></a></article>`;
-      }).join("") || `<p class="empty-state">${escapeHtml(text("noMatch"))}</p>`;
-      return `<section class="day-section"><div class="day-title"><h2>${escapeHtml(text("day"))} ${index + 1}</h2><span>${hourTotal} ${escapeHtml(text("hours"))}</span></div>${stops}</section>`;
+    el("#itinerary").innerHTML = plan.schedule.map((daySlots, index) => {
+      const hourTotal = daySlots.reduce((total, slot) => total + (slot.place ? averageHours(slot.place) : 0), 0);
+      const formattedHours = hourTotal % 1 ? hourTotal.toFixed(1) : hourTotal;
+      return `<section class="day-section"><div class="day-title"><h2>${escapeHtml(text("day"))} ${index + 1}</h2><span>${formattedHours} ${escapeHtml(text("hours"))}</span></div>${daySlots.map(renderScheduleStop).join("")}</section>`;
     }).join("");
     observeReveals();
   }
@@ -373,7 +491,11 @@
       section.hidden = !active;
       section.classList.toggle("active", active);
     });
-    all("[data-view-link]").forEach((link) => link.classList.toggle("active", link.dataset.viewLink === view));
+    all("[data-view-link]").forEach((link) => {
+      const active = link.dataset.viewLink === view;
+      link.classList.toggle("active", active);
+      link.toggleAttribute("aria-current", active);
+    });
     el("#site-nav").classList.remove("open");
     el("#menu-toggle").setAttribute("aria-expanded", "false");
     window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
@@ -416,8 +538,7 @@
     el("#language-toggle").textContent = text("language");
     el("#language-toggle").setAttribute("aria-label", text("language"));
     el("#menu-toggle").setAttribute("aria-label", el("#site-nav").classList.contains("open") ? text("closeNav") : text("openNav"));
-    const navigation = ["home", "explore", "planner", "saved"];
-    all("[data-view-link]").forEach((link, index) => { link.textContent = text(navigation[index]); });
+    all("[data-view-link]").forEach((link) => { link.textContent = text(link.dataset.viewLink === "hidden-abha" ? "hiddenAbha" : link.dataset.viewLink); });
     el(".brand").setAttribute("aria-label", `${text("footerTitle")} ${text("home")}`);
     el("#hero-eyebrow").textContent = text("heroEyebrow");
     el("#hero-kicker").textContent = text("heroKicker");
@@ -456,6 +577,7 @@
     el(".site-footer p:last-child").textContent = text("footerText");
     renderHomeInterests();
     renderHomeGallery();
+    renderHiddenAbha();
     renderExplore();
     renderChoices();
     if (state.plan) renderPlan();
@@ -488,7 +610,7 @@
   function bindEvents() {
     window.addEventListener("hashchange", () => {
       const view = window.location.hash.slice(1) || "home";
-      if (["home", "explore", "planner", "results", "saved"].includes(view)) changeView(view);
+      if (["home", "hidden-abha", "explore", "planner", "results", "saved"].includes(view)) changeView(view);
     });
     document.addEventListener("click", (event) => {
       const link = event.target.closest("[data-go-to], [data-view-link]");
@@ -508,14 +630,26 @@
       }
       const destination = event.target.closest("[data-explore-destination]");
       if (destination) {
-        state.featuredPlaceId = destination.dataset.exploreDestination; state.filter = "All";
+        state.featuredPlaceId = destination.dataset.exploreDestination; state.filter = "All"; state.visitMonth = null;
         history.replaceState(null, "", "#explore"); renderExplore(); changeView("explore");
         requestAnimationFrame(() => el(`[data-place-card="${state.featuredPlaceId}"]`)?.focus());
+      }
+      const startHiddenAbha = event.target.closest("[data-start-hidden-abha]");
+      if (startHiddenAbha) {
+        state.hiddenAbhaDay = chooseRandomHiddenAbhaDay();
+        renderHiddenAbha();
+        requestAnimationFrame(() => el("#hidden-abha-title")?.focus());
       }
     });
     el("#menu-toggle").addEventListener("click", () => {
       const nav = el("#site-nav"); const open = !nav.classList.contains("open");
       nav.classList.toggle("open", open); el("#menu-toggle").setAttribute("aria-expanded", String(open)); el("#menu-toggle").setAttribute("aria-label", open ? text("closeNav") : text("openNav"));
+    });
+    el("#month-filter").addEventListener("change", (event) => {
+      const value = Number(event.currentTarget.value);
+      state.visitMonth = Number.isInteger(value) && value >= 1 && value <= 12 ? value : null;
+      state.featuredPlaceId = null;
+      renderExplore();
     });
     el("#language-toggle").addEventListener("click", () => { state.language = isArabic() ? "en" : "ar"; updateLanguage(); });
     el("#theme-toggle").addEventListener("click", () => applyTheme(state.theme === "dark" ? "light" : "dark", true));
@@ -550,9 +684,9 @@
 
   function init() {
     applyTheme(state.theme);
-    renderHomeInterests(); renderHomeGallery(); renderExplore(); renderChoices(); renderSaved(); bindEvents(); observeReveals();
+    renderHomeInterests(); renderHomeGallery(); renderHiddenAbha(); renderExplore(); renderChoices(); renderSaved(); bindEvents(); observeReveals();
     const initialView = window.location.hash.slice(1);
-    if (["home", "explore", "planner", "results", "saved"].includes(initialView)) changeView(initialView);
+    if (["home", "hidden-abha", "explore", "planner", "results", "saved"].includes(initialView)) changeView(initialView);
   }
 
   init();

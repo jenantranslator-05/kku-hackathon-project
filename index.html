@@ -33,6 +33,7 @@
     </div>
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
       <a href="#home" data-view-link="home">Home</a>
+      <a href="#hidden-abha" data-view-link="hidden-abha">Hidden Abha</a>
       <a href="#explore" data-view-link="explore">Explore</a>
       <a href="#planner" data-view-link="planner">Plan my trip</a>
       <a href="#saved" data-view-link="saved">Saved trip</a>
@@ -99,13 +100,24 @@
       </section>
     </section>
 
+    <section class="view" id="hidden-abha" aria-labelledby="hidden-abha-title" hidden>
+      <div id="hidden-abha-content"></div>
+      <p class="sr-only" id="hidden-abha-status" aria-live="polite" aria-atomic="true"></p>
+    </section>
+
     <section class="view" id="explore" aria-labelledby="explore-title" hidden>
       <div class="page-intro">
         <p class="eyebrow">EXPLORE ABHA</p>
         <h1 id="explore-title">Places for every kind of day.</h1>
         <p>Filter places using the guide’s categories and approved interest tags.</p>
       </div>
-      <div class="filter-bar" id="filter-bar" aria-label="Filter destinations"></div>
+      <div class="explore-controls">
+        <div class="filter-bar" id="filter-bar" aria-label="Filter destinations"></div>
+        <div class="month-filter">
+          <label for="month-filter" id="month-filter-label">Best month</label>
+          <select id="month-filter" name="month-filter"></select>
+        </div>
+      </div>
       <p class="result-count" id="place-count" aria-live="polite"></p>
       <div class="place-grid" id="places-grid"></div>
     </section>
