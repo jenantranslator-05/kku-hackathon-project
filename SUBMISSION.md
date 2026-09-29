@@ -1,4 +1,5 @@
 Name: Jenan Abdulrahman
+Email (the one I registered with): jenanasiri05@gmail.com
 Cohort (girls or boys): girls
 Project option: Abha visitor guide
 Problem: Visitors need a simple way to choose Abha destinations that match their interests, available time, budget, companions, and preferred walking level.
