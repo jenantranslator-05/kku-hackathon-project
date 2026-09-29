@@ -44,6 +44,7 @@
       heroTitle: "Find your Abha moment.", heroText: "Choose what calls you—mountain views, heritage, cafés, food, or a family day out—and create a plan from the places in this guide.", heroBadge: "16 places to discover",
       hiddenEyebrow: "HIDDEN ABHA", hiddenTitle: "One day, lived like a local.", hiddenStart: "Start the Experience", hiddenDay: "Your Hidden Abha day", hiddenStatus: "Your Hidden Abha itinerary for Day {day} is ready.", hiddenMap: "Open in Google Maps",
       moodsEyebrow: "ABHA BY MOOD", moodsTitle: "Choose the feeling for your day.", moodsText: "Pick a mood and discover existing places in the guide that fit it.",
+      homeCardsSection: "Abha photo cards", homeCardsLabel: "Show the next Abha photo", homeCardsStatus: "Showing photo {number} of 6",
       moodPrompt: "Which Abha mood fits today?", moodCoffeeCalm: "Coffee & Calm", moodNatureViews: "Nature & Views", moodCultureHeritage: "Culture & Heritage", moodFoodDiscovery: "Food Discovery",
       moodSelected: "Abha for your {mood} mood", moodShowing: "Showing {count} places for {mood}", moodAllShowing: "Showing all {count} places", chooseAnotherMood: "Choose another mood", showAllMoods: "Show all moods", noMoodPlaces: "No guide places match this mood yet."
     },
@@ -85,6 +86,7 @@
       heroTitle: "اعثر على لحظتك في أبها.", heroText: "اختر ما يجذبك—إطلالات جبلية أو تراث أو مقاهٍ أو طعام أو يوم عائلي—وأنشئ خطة من الأماكن في هذا الدليل.", heroBadge: "16 مكانًا لاكتشافها",
       hiddenEyebrow: "أبها الخفية", hiddenTitle: "يوم واحد، بعيون أهل أبها.", hiddenStart: "ابدأ التجربة", hiddenDay: "يومك في أبها الخفية", hiddenStatus: "برنامج أبها الخفية لليوم {day} جاهز.", hiddenMap: "فتح في خرائط Google",
       moodsEyebrow: "أبها حسب المزاج", moodsTitle: "اختر الإحساس المناسب ليومك.", moodsText: "اختر مزاجًا واكتشف أماكن موجودة في الدليل تناسبه.",
+      homeCardsSection: "بطاقات صور أبها", homeCardsLabel: "عرض صورة أبها التالية", homeCardsStatus: "عرض الصورة {number} من 6",
       moodPrompt: "أي مزاج في أبها يناسبك اليوم؟", moodCoffeeCalm: "قهوة وهدوء", moodNatureViews: "طبيعة وإطلالات", moodCultureHeritage: "ثقافة وتراث", moodFoodDiscovery: "اكتشاف الطعام",
       moodSelected: "أبها لمزاج {mood}", moodShowing: "عرض {count} أماكن لمزاج {mood}", moodAllShowing: "عرض كل الأماكن: {count}", chooseAnotherMood: "اختر مزاجًا آخر", showAllMoods: "عرض كل الخيارات", noMoodPlaces: "لا توجد أماكن في الدليل تطابق هذا المزاج حاليًا."
     }
@@ -98,6 +100,14 @@
     walking: ["I don’t mind", "Moderate", "Minimal walking"]
   };
   const interests = ["Nature", "Cafés", "Food", "Heritage", "Photography", "Family", "Adventures"];
+  const homeCardImages = [
+    "assets/images/card-1.jpg.jpeg",
+    "assets/images/card-2.jpg.jpeg",
+    "assets/images/card-3.jpg.jpeg",
+    "assets/images/card-4.jpg.jpeg",
+    "assets/images/card-5.jpg.jpeg",
+    "assets/images/card-6.jpg.jpeg"
+  ];
 
   function loadTheme() {
     try {
@@ -118,7 +128,8 @@
     plan: null,
     hiddenAbhaDay: null,
     mood: null,
-    showAllMoods: false
+    showAllMoods: false,
+    homeCardIndex: 0
   };
 
   const moodOptions = [
@@ -216,14 +227,39 @@
     observeReveals();
   }
 
+  function homeCardPosition(cardIndex) {
+    return (cardIndex - state.homeCardIndex + homeCardImages.length) % homeCardImages.length;
+  }
+
+  function updateHomePhotoCards() {
+    all("[data-home-card-index]").forEach((card) => {
+      const position = homeCardPosition(Number(card.dataset.homeCardIndex));
+      card.className = `home-card-stack-card home-card-stack-card--${position}`;
+    });
+    el("#home-card-stack-status").textContent = text("homeCardsStatus").replace("{number}", state.homeCardIndex + 1);
+  }
+
+  function updateHomePhotoCardLabels() {
+    const control = el("[data-cycle-home-cards]");
+    if (control) control.setAttribute("aria-label", text("homeCardsLabel"));
+    el("#home-card-stack-status").textContent = text("homeCardsStatus").replace("{number}", state.homeCardIndex + 1);
+  }
+
   function renderHomePhotoCards() {
-    const photoIds = ["alsoudah", "rijal-almaa", "art-street", "high-city", "abu-khayal-park", "lantico"];
-    const photos = photoIds.map((id) => places.find((place) => place.id === id)).filter(Boolean);
-    el("#home-photo-grid").innerHTML = photos.map((place) => `
-      <article class="home-photo-card reveal-item">
-        <img src="${place.image}" alt="${escapeHtml(nameFor(place))}" loading="lazy" decoding="async">
-      </article>`).join("");
-    observeReveals();
+    const stack = el("#home-card-stack");
+    if (!stack) return;
+    stack.innerHTML = `<button class="home-card-stack-control" type="button" data-cycle-home-cards aria-label="${escapeHtml(text("homeCardsLabel"))}">
+      ${homeCardImages.map((image, index) => `
+        <span class="home-card-stack-card home-card-stack-card--${homeCardPosition(index)}" data-home-card-index="${index}" aria-hidden="true">
+          <img src="${image}" alt="" loading="${index === state.homeCardIndex ? "eager" : "lazy"}" ${index === state.homeCardIndex ? "fetchpriority=\"high\"" : ""} decoding="async">
+        </span>`).join("")}
+    </button>`;
+    updateHomePhotoCards();
+  }
+
+  function cycleHomePhotoCards() {
+    state.homeCardIndex = (state.homeCardIndex + 1) % homeCardImages.length;
+    updateHomePhotoCards();
   }
 
   const monthLabelKeys = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
@@ -648,7 +684,7 @@
     el("#gallery-title").textContent = text("galleryTitle");
     el("#gallery-copy").textContent = text("galleryCopy");
     el("#gallery-all-link").innerHTML = `${escapeHtml(text("viewAll"))} <span aria-hidden="true">→</span>`;
-    el("#home-photos-title").textContent = isArabic() ? "أبها بالصور" : "Abha in pictures";
+    el(".home-card-stack-section").setAttribute("aria-label", text("homeCardsSection"));
     el("#callout-eyebrow").textContent = text("callout");
     el("#callout-title").textContent = text("calloutTitle");
     el("#callout-button").innerHTML = `${escapeHtml(text("build"))} <span aria-hidden="true">→</span>`;
@@ -675,7 +711,7 @@
     el(".site-footer p:last-child").textContent = text("footerText");
     renderHomeInterests();
     renderHomeGallery();
-    renderHomePhotoCards();
+    updateHomePhotoCardLabels();
     renderHiddenAbha();
     renderMoodPage();
     renderExplore();
@@ -720,6 +756,11 @@
         if (view === "explore") state.featuredPlaceId = null;
         history.replaceState(null, "", `#${view}`);
         changeView(view);
+      }
+      const homeCardStack = event.target.closest("[data-cycle-home-cards]");
+      if (homeCardStack) {
+        cycleHomePhotoCards();
+        requestAnimationFrame(() => el("[data-cycle-home-cards]")?.focus());
       }
       const filter = event.target.closest("[data-filter]");
       if (filter) { state.filter = filter.dataset.filter; state.featuredPlaceId = null; renderExplore(); }

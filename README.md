@@ -39,7 +39,7 @@ To see a ready-made example:
 - Each Explore card also has curated Gregorian `visitMonths` guidance for the Best month picker. Food and café-led venues are available all year, while all other Explore destinations are recommended from April through November. This editorial seasonal guidance is separate from the supplied spreadsheet fields, just as the approved Photography and Adventures tags are.
 - Lunch recommendations are selected from restaurant and food venue categories because the supplied data does not provide a Lunch best-time field.
 - Curo appears in Explore with its supplied map link and can be included in automatic trips when it matches the selected source-based preferences.
-- All 16 supplied destinations use matching bundled local images from `assets/images/`; no external images are used. The Home page presents an editorial gallery and a curated six-image card gallery, and **Explore** always provides access to every destination.
+- All 16 supplied destinations use matching bundled local images from `assets/images/`; no external images are used. The Home page begins with a looping, user-supplied six-image card stack from `assets/images/card-1.jpg.jpeg` through `card-6.jpg.jpeg`; selecting the front card moves it to the back. **Explore** always provides access to every destination.
 - The visual light/dark preference is stored only with browser `localStorage`; light is the default. The Jacaranda, cloud, and mountain details are CSS-only.
 - Multiple planner interests can be selected at once.
 - Trips are saved with browser `localStorage`; nothing a visitor types is sent to GitHub or any server.
