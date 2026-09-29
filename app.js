@@ -216,6 +216,16 @@
     observeReveals();
   }
 
+  function renderHomePhotoCards() {
+    const photoIds = ["alsoudah", "rijal-almaa", "art-street", "high-city", "abu-khayal-park", "lantico"];
+    const photos = photoIds.map((id) => places.find((place) => place.id === id)).filter(Boolean);
+    el("#home-photo-grid").innerHTML = photos.map((place) => `
+      <article class="home-photo-card reveal-item">
+        <img src="${place.image}" alt="${escapeHtml(nameFor(place))}" loading="lazy" decoding="async">
+      </article>`).join("");
+    observeReveals();
+  }
+
   const monthLabelKeys = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 
   function monthLabel(month) {
@@ -638,6 +648,7 @@
     el("#gallery-title").textContent = text("galleryTitle");
     el("#gallery-copy").textContent = text("galleryCopy");
     el("#gallery-all-link").innerHTML = `${escapeHtml(text("viewAll"))} <span aria-hidden="true">→</span>`;
+    el("#home-photos-title").textContent = isArabic() ? "أبها بالصور" : "Abha in pictures";
     el("#callout-eyebrow").textContent = text("callout");
     el("#callout-title").textContent = text("calloutTitle");
     el("#callout-button").innerHTML = `${escapeHtml(text("build"))} <span aria-hidden="true">→</span>`;
@@ -664,6 +675,7 @@
     el(".site-footer p:last-child").textContent = text("footerText");
     renderHomeInterests();
     renderHomeGallery();
+    renderHomePhotoCards();
     renderHiddenAbha();
     renderMoodPage();
     renderExplore();
@@ -793,7 +805,7 @@
 
   function init() {
     applyTheme(state.theme);
-    renderHomeInterests(); renderHomeGallery(); renderHiddenAbha(); renderMoodPage(); renderExplore(); renderChoices(); renderSaved(); bindEvents(); observeReveals();
+    renderHomeInterests(); renderHomeGallery(); renderHomePhotoCards(); renderHiddenAbha(); renderMoodPage(); renderExplore(); renderChoices(); renderSaved(); bindEvents(); observeReveals();
     const initialView = window.location.hash.slice(1);
     if (["home", "hidden-abha", "moods", "explore", "planner", "results", "saved"].includes(initialView)) changeView(initialView);
   }
